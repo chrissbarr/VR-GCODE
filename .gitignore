@@ -60,3 +60,6 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+GCODEViewer/Saved/
+GCODEViewer/aFantasy_Castle.gcode
+GCODEViewer/Fantasy_CastleSmall.gcode
