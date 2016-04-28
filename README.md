@@ -52,3 +52,9 @@ Reset HMD Tracking - F8, Xbox Back
 
 An Xbox controller is recommended.
 
+
+## Todo
+* Vive motion controls for scale / rotate
+* Option to render different features in different colours (infill, non-print moves, etc)
+* Adjustable quality levels
+* Improved file handling / selection
