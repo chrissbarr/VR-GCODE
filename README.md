@@ -12,6 +12,8 @@ The advantage of this over a regular GCODE viewer is that it makes it easy to in
 alt="Demo Video 1" width="800" height="450" border="10" /></a>
 
 ## How To
+A compiled copy of the program can be downloaded [here](https://dl.dropboxusercontent.com/u/20412569/downloads/VRGCODE.zip). Otherwise, Unreal Engine 4.11 is required to compile and run the files. 
+
 Upon opening, the program will scan the "GCODEViewer" directory and look for any .gcode files (up to 10 total). These files will then be displayed, and a file can be selected to preview.
 
 Once selected, the program will begin to parse the GCODE file. The amount of time this will take depends on the complexity of the GCODE file - size is a relatively good indicator, and the relation between file size and loading time is roughly linear. An indicator shows the loading progress.
