@@ -7,6 +7,12 @@ This is a program that takes sliced GCODE files for 3D printing and renders a pr
 The advantage of this over a regular GCODE viewer is that it makes it easy to interpret the scale of the printed object and its various features. Additionally, it is possible to look at the object from various angles in a natural way.
 
 ## Demo Videos
+Updated Video:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=D7j5xxwkkqo
+" target="_blank"><img src="http://img.youtube.com/vi/D7j5xxwkkqo/0.jpg" 
+alt="Demo Video 2" width="800" height="450" border="10" /></a>
+
+First Video:
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=w0qat7VMZCM
 " target="_blank"><img src="http://img.youtube.com/vi/w0qat7VMZCM/0.jpg" 
 alt="Demo Video 1" width="800" height="450" border="10" /></a>
