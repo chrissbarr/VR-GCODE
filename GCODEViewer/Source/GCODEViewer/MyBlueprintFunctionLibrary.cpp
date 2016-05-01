@@ -121,7 +121,7 @@ FTransform UMyBlueprintFunctionLibrary::extrudeTransform(const FVector startPoin
 
 	FTransform outTransform;
 
-	FVector lineLocation = ((startPoint + endPoint).operator*(.5)).operator-(modelCentre);
+	FVector lineLocation = ((endPoint + startPoint).operator*(.5)).operator-(modelCentre);
 
 	FVector lineScale;
 
@@ -129,6 +129,12 @@ FTransform UMyBlueprintFunctionLibrary::extrudeTransform(const FVector startPoin
 	lineScale.Z = 0.004;
 
 	lineScale.X = ((startPoint.operator-(endPoint)).Size())/100;
+
+	lineLocation.X = -lineLocation.X;
+	//lineLocation.Y = -lineLocation.Y;
+
+	//lineRotation.Yaw += 3.14159/2;
+
 
 	outTransform.SetLocation(lineLocation);
 	outTransform.SetRotation(lineRotation.Quaternion());
