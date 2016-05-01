@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\GCODEViewer.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{7BD0CD69-3986-4CE9-816A-E885E276EE0A}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\GCODEViewer.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\GCODEViewerEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{52D1FAD7-4F5A-47B0-9FE7-4FE466884952}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\GCODEViewer">
+			<UniqueIdentifier>{414743DA-8F2B-4FA2-9E80-FD6C371BE24F}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\GCODEViewer\GCODEViewer.Build.cs">
+			<Filter>Source\GCODEViewer</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\GCODEViewer\GCODEViewer.cpp">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GCODEViewer\GCODEViewer.h">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\GCODEViewer\MyBlueprintFunctionLibrary.cpp">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GCODEViewer\MyBlueprintFunctionLibrary.h">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>
