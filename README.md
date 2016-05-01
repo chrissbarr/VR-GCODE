@@ -9,7 +9,7 @@ The advantage of this over a regular GCODE viewer is that it makes it easy to in
 ## Demo
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=w0qat7VMZCM
 " target="_blank"><img src="http://img.youtube.com/vi/w0qat7VMZCM/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="640" height="360" border="10" /></a>
+alt="Demo Video 1" width="640" height="360" border="10" /></a>
 
 ## How To
 This program is currently in its very early stages (proof-of-concept), and there is no proper user interface for selecting files to preview. 
@@ -27,31 +27,33 @@ Graphical performance may be poor (low FPS) during initial loading and model con
 
 ## Controls
 
-Move Forward / Back - W, S  Xbox Right Thumbstick Y
+<img src="https://raw.githubusercontent.com/chrissbarr/VR-GCODE/master/XboxControlScheme.png" width="600">
 
-Move Left / Right - A, D, Xbox Right Thumbstick X
+Select File - Space, Xbox A
 
-Move Up / Down - Q, E, Xbox D-Pad Y
+Move Faster - Shift, Xbox B
 
-Rotate View - Mouse X, Xbox Bumpers
+Toggle Travel Moves - M, Xbox X
 
+Reset Model Rotation and Scale - Tab / Xbox Y
+
+Load New Model - Del, Xbox Back
+
+Move Forward / Back - W, S  Xbox Left Thumbstick Y
+
+Move Left / Right - A, D, Xbox Left Thumbstick X
+
+Move Up / Down - Q, E, Xbox Bumpers
+
+Rotate View - Mouse X
 
 Scale Model - R, F, Xbox Triggers
 
-Rotate Model - Arrow Keys, Xbox Left Thumbstick
+Rotate Model - Arrow Keys, Xbox Right Thumbstick
 
-Reset Model Rotation and Scale - Shift / Xbox Y
+Adjust Camera Clipping Plane - T, H, Xbox D-Pad Up/Down
 
-
-Adjust Camera Clipping Plane - +, -, Xbox D-Pad X
-
-Reset HMD Tracking - F8, Xbox Back
-
-
-
-
-An Xbox controller is recommended.
-
+Layer Jog - Num +, Num -, Xbox D-Pad Left/Right
 
 ## Todo
 * Vive motion controls for scale / rotate
