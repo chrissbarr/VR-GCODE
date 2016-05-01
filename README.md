@@ -12,7 +12,7 @@ The advantage of this over a regular GCODE viewer is that it makes it easy to in
 alt="Demo Video 1" width="800" height="450" border="10" /></a>
 
 ## How To
-Upon opening, the program will scan its root directory (in which the .exe resides) and look for any .gcode files (up to 10 total). These files will then be displayed, and a file can be selected to preview.
+Upon opening, the program will scan the "GCODEViewer" directory and look for any .gcode files (up to 10 total). These files will then be displayed, and a file can be selected to preview.
 
 Once selected, the program will begin to parse the GCODE file. The amount of time this will take depends on the complexity of the GCODE file - size is a relatively good indicator, and the relation between file size and loading time is roughly linear. An indicator shows the loading progress.
 
@@ -60,3 +60,6 @@ Rendering an entire GCODE file for preview in VR is a computationally intensive 
 * Option to render different features in different colours (infill, non-print moves, etc)
 * Adjustable quality levels
 * Improved file handling / selection
+
+## License
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
