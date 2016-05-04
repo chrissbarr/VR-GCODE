@@ -143,6 +143,105 @@ FTransform UMyBlueprintFunctionLibrary::extrudeTransform(const FVector startPoin
 	return outTransform;
 }
 
+
+bool UMyBlueprintFunctionLibrary::loadBinarySTL(
+	const FString& FullFilePath,
+	TArray<uint8> & binaryData,
+	int & triangleCount
+) {
+
+	UE_LOG(LogTemp, Warning, TEXT("Loading Binary STL %s"), *FullFilePath);
+
+	TArray<uint8> TheBinaryArray;
+
+	
+	if (!FFileHelper::LoadFileToArray(TheBinaryArray, *FullFilePath))
+	{
+		//ClientMessage("FFILEHELPER:>> Invalid File");
+		UE_LOG(LogTemp, Warning, TEXT("Invalid File!"));
+		return false;
+		//~~
+	}
+
+	//File Load Error
+	if (TheBinaryArray.Num() <= 0) {
+		UE_LOG(LogTemp, Warning, TEXT("Empty File!"));
+		return false;
+	}
+
+	binaryData = TheBinaryArray;
+
+	UE_LOG(LogTemp, Warning, TEXT("Binary STL Loaded"));
+
+	//Read triangle count from header
+	int index = 80;
+
+	triangleCount = binaryData[index] | (uint32_t)binaryData[index + 1] << 8 | ((uint32_t)binaryData[index + 2] << 16 | (uint32_t)binaryData[index + 3] << 24);
+	UE_LOG(LogTemp, Warning, TEXT("Triangle Count: %d"), triangleCount);
+
+	return true;
+}
+
+bool UMyBlueprintFunctionLibrary::parseBinarySTL(const TArray<uint8> binaryData, const int startingIndex, const int verticesToParse, TArray<FVector> &vertexArray, TArray<FVector> & normalArray, int & newIndex) {
+	int index = startingIndex;
+	int i;
+	int arrayIndex = 0;
+	bool finishedData = false;
+
+	//for (int i = index; i < 80; i++) {
+		//UE_LOG(LogTemp, Warning, TEXT("%d"), binaryData[i]);
+	//}
+	
+
+	
+
+	while (index < FMath::Min(binaryData.Num(), startingIndex + (verticesToParse*50))) {
+
+		//UE_LOG(LogTemp, Warning, TEXT("Calculating Normal"));
+		normalArray.Add(FVector(getFloat32FromByteArray(binaryData, index), getFloat32FromByteArray(binaryData, index + 4), getFloat32FromByteArray(binaryData, index + 8)));
+		//UE_LOG(LogTemp, Warning, TEXT("Normal Calculated"));
+		normalArray.Add(FVector(normalArray[arrayIndex]));
+		normalArray.Add(FVector(normalArray[arrayIndex]));
+		//UE_LOG(LogTemp, Warning, TEXT("Normal Copied"));
+		
+		index += 12;
+		
+		for (i = 0; i < 3; i++) {
+
+			vertexArray.Add(FVector(getFloat32FromByteArray(binaryData, index + 8), getFloat32FromByteArray(binaryData, index + 4), getFloat32FromByteArray(binaryData, index)));
+			//UE_LOG(LogTemp, Warning, TEXT("Vertex Calculated"));
+			index += 12;
+			arrayIndex += 1;
+		}
+
+		index += 2;
+
+	}
+
+	if (index >= binaryData.Num()-1) {
+		finishedData = true;
+		//UE_LOG(LogTemp, Warning, TEXT("Binary File Exhausted"));
+	}
+
+	newIndex = index;
+
+	return finishedData;
+}
+
+float UMyBlueprintFunctionLibrary::getFloat32FromByteArray(const TArray<uint8> binaryData, const int startIndex) {
+	static FloatUnionData tempFloat;
+
+	tempFloat.byteData = getInt32FromByteArray(binaryData, startIndex);
+
+	return tempFloat.f;
+
+	//return 0.0f;
+}
+
+int UMyBlueprintFunctionLibrary::getInt32FromByteArray(const TArray<uint8> binaryData, const int startIndex) {
+	return binaryData[startIndex] | (uint32_t)binaryData[startIndex + 1] << 8 | ((uint32_t)binaryData[startIndex + 2] << 16 | (uint32_t)binaryData[startIndex + 3] << 24);
+}
+
 //int UMyBlueprintFunctionLibrary::hmdType() {
 //	if (GEngine->HMDDevice.IsValid() && GEngine->HMDDevice->IsHMDEnabled())
 //	{
