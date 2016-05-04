@@ -45,10 +45,14 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	{
 		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "extrudeTransform",(Native)&UMyBlueprintFunctionLibrary::execextrudeTransform);
 		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "getAxisCoordinateCPP",(Native)&UMyBlueprintFunctionLibrary::execgetAxisCoordinateCPP);
+		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "getFloat32FromByteArray",(Native)&UMyBlueprintFunctionLibrary::execgetFloat32FromByteArray);
+		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "getInt32FromByteArray",(Native)&UMyBlueprintFunctionLibrary::execgetInt32FromByteArray);
 		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "getNewCoordinate",(Native)&UMyBlueprintFunctionLibrary::execgetNewCoordinate);
+		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "loadBinarySTL",(Native)&UMyBlueprintFunctionLibrary::execloadBinarySTL);
+		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "parseBinarySTL",(Native)&UMyBlueprintFunctionLibrary::execparseBinarySTL);
 		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "parseGcode",(Native)&UMyBlueprintFunctionLibrary::execparseGcode);
 	}
-	IMPLEMENT_CLASS(UMyBlueprintFunctionLibrary, 493014256);
+	IMPLEMENT_CLASS(UMyBlueprintFunctionLibrary, 1322396606);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -59,7 +63,11 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMoveStructCPP();
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_extrudeTransform();
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getAxisCoordinateCPP();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getFloat32FromByteArray();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getInt32FromByteArray();
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getNewCoordinate();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_loadBinarySTL();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseBinarySTL();
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseGcode();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary_NoRegister();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary();
@@ -88,12 +96,12 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 			MetaData->SetValue(ReturnEnum, TEXT("PE_Perimeter.DisplayName"), TEXT("Perimeter"));
 			MetaData->SetValue(ReturnEnum, TEXT("PE_Support.DisplayName"), TEXT("Support"));
 			MetaData->SetValue(ReturnEnum, TEXT("PE_Travel.DisplayName"), TEXT("Travel"));
-			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("//\"BlueprintType\" is essential to include"));
+			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("\"BlueprintType\" is essential to include"));
 #endif
 		}
 		return ReturnEnum;
 	}
-	uint32 Get_Z_Construct_UEnum_GCODEViewer_EPrintMoveEnum_CRC() { return 2255153152U; }
+	uint32 Get_Z_Construct_UEnum_GCODEViewer_EPrintMoveEnum_CRC() { return 1336112517U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FPrintMoveStructCPP()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_GCODEViewer();
@@ -183,6 +191,60 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getFloat32FromByteArray()
+	{
+		struct MyBlueprintFunctionLibrary_eventgetFloat32FromByteArray_Parms
+		{
+			TArray<uint8> binaryData;
+			int32 startIndex;
+			float ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UMyBlueprintFunctionLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("getFloat32FromByteArray"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04022401, 65535, sizeof(MyBlueprintFunctionLibrary_eventgetFloat32FromByteArray_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(ReturnValue, MyBlueprintFunctionLibrary_eventgetFloat32FromByteArray_Parms), 0x0010000000000580);
+			UProperty* NewProp_startIndex = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("startIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(startIndex, MyBlueprintFunctionLibrary_eventgetFloat32FromByteArray_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(binaryData, MyBlueprintFunctionLibrary_eventgetFloat32FromByteArray_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData_Inner = new(EC_InternalUseOnlyConstructor, NewProp_binaryData, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("STL"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("MyBlueprintFunctionLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getInt32FromByteArray()
+	{
+		struct MyBlueprintFunctionLibrary_eventgetInt32FromByteArray_Parms
+		{
+			TArray<uint8> binaryData;
+			int32 startIndex;
+			int32 ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UMyBlueprintFunctionLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("getInt32FromByteArray"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04022401, 65535, sizeof(MyBlueprintFunctionLibrary_eventgetInt32FromByteArray_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(ReturnValue, MyBlueprintFunctionLibrary_eventgetInt32FromByteArray_Parms), 0x0010000000000580);
+			UProperty* NewProp_startIndex = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("startIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(startIndex, MyBlueprintFunctionLibrary_eventgetInt32FromByteArray_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(binaryData, MyBlueprintFunctionLibrary_eventgetInt32FromByteArray_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData_Inner = new(EC_InternalUseOnlyConstructor, NewProp_binaryData, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("STL"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("MyBlueprintFunctionLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getNewCoordinate()
 	{
 		struct MyBlueprintFunctionLibrary_eventgetNewCoordinate_Parms
@@ -207,6 +269,74 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 #if WITH_METADATA
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("GCODE"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("MyBlueprintFunctionLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_loadBinarySTL()
+	{
+		struct MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms
+		{
+			FString FullFilePath;
+			TArray<uint8> binaryData;
+			int32 triangleCount;
+			bool ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UMyBlueprintFunctionLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("loadBinarySTL"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04422401, 65535, sizeof(MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(ReturnValue, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms, bool);
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(ReturnValue, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms), 0x0010000000000580, CPP_BOOL_PROPERTY_BITMASK(ReturnValue, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms), sizeof(bool), true);
+			UProperty* NewProp_triangleCount = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("triangleCount"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(triangleCount, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms), 0x0010000000000180);
+			UProperty* NewProp_binaryData = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(binaryData, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms), 0x0010000000000180);
+			UProperty* NewProp_binaryData_Inner = new(EC_InternalUseOnlyConstructor, NewProp_binaryData, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			UProperty* NewProp_FullFilePath = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("FullFilePath"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(FullFilePath, MyBlueprintFunctionLibrary_eventloadBinarySTL_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("STL"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("MyBlueprintFunctionLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseBinarySTL()
+	{
+		struct MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms
+		{
+			TArray<uint8> binaryData;
+			int32 startingIndex;
+			int32 linesToParse;
+			TArray<FVector> vertexArray;
+			TArray<FVector> normalArray;
+			int32 newIndex;
+			bool ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UMyBlueprintFunctionLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("parseBinarySTL"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04422401, 65535, sizeof(MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(ReturnValue, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms, bool);
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(ReturnValue, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000580, CPP_BOOL_PROPERTY_BITMASK(ReturnValue, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), sizeof(bool), true);
+			UProperty* NewProp_newIndex = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("newIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(newIndex, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000180);
+			UProperty* NewProp_normalArray = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("normalArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(normalArray, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000180);
+			UProperty* NewProp_normalArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_normalArray, TEXT("normalArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FVector());
+			UProperty* NewProp_vertexArray = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("vertexArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(vertexArray, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000180);
+			UProperty* NewProp_vertexArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_vertexArray, TEXT("vertexArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FVector());
+			UProperty* NewProp_linesToParse = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("linesToParse"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(linesToParse, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000082);
+			UProperty* NewProp_startingIndex = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("startingIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(startingIndex, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(binaryData, MyBlueprintFunctionLibrary_eventparseBinarySTL_Parms), 0x0010000000000082);
+			UProperty* NewProp_binaryData_Inner = new(EC_InternalUseOnlyConstructor, NewProp_binaryData, TEXT("binaryData"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("STL"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("MyBlueprintFunctionLibrary.h"));
 #endif
 		}
@@ -273,7 +403,11 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 
 				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_extrudeTransform());
 				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getAxisCoordinateCPP());
+				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getFloat32FromByteArray());
+				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getInt32FromByteArray());
 				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getNewCoordinate());
+				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_loadBinarySTL());
+				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseBinarySTL());
 				OuterClass->LinkChild(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseGcode());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -281,7 +415,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_extrudeTransform(), "extrudeTransform"); // 4110027590
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getAxisCoordinateCPP(), "getAxisCoordinateCPP"); // 3844589454
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getFloat32FromByteArray(), "getFloat32FromByteArray"); // 2098516711
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getInt32FromByteArray(), "getInt32FromByteArray"); // 1184602587
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_getNewCoordinate(), "getNewCoordinate"); // 3811042676
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_loadBinarySTL(), "loadBinarySTL"); // 3393789004
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseBinarySTL(), "parseBinarySTL"); // 4010274360
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseGcode(), "parseGcode"); // 533672629
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -306,8 +444,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/GCODEViewer")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x67C3ED58;
-			Guid.B = 0x77844C18;
+			Guid.A = 0x6E015766;
+			Guid.B = 0x9EA1B325;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

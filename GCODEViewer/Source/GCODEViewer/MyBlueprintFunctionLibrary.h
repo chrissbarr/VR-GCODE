@@ -9,6 +9,11 @@
  * 
  */
 
+typedef union floatdata {
+	float f;
+	unsigned long byteData;
+} FloatUnionData;
+
 UENUM(BlueprintType)		//"BlueprintType" is essential to include
 enum class EPrintMoveEnum : uint8
 {
@@ -87,6 +92,23 @@ public:
 	//UFUNCTION(BlueprintCallable, BlueprintPure, Category = "GCODE")
 	//static int hmdType();
 	//
+
+	//
+	UFUNCTION(BlueprintCallable, Category = "STL")
+	static bool loadBinarySTL(const FString& FullFilePath, TArray<uint8>& binaryData, int & triangleCount);
+
+	//
+	UFUNCTION(BlueprintCallable, Category = "STL")
+	static bool parseBinarySTL(const TArray<uint8> binaryData, const int startingIndex, const int linesToParse, TArray<FVector> &vertexArray, TArray<FVector> & normalArray, int & newIndex);
+
+	UFUNCTION(BlueprintCallable, Category = "STL")
+	static int getInt32FromByteArray(const TArray<uint8> binaryData, const int startIndex);
+
+
+	UFUNCTION(BlueprintCallable, Category = "STL")
+	static float getFloat32FromByteArray(const TArray<uint8> binaryData, const int startIndex);
+	
+
 };
 
 

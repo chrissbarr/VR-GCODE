@@ -16,12 +16,49 @@ struct FPrintMoveStructCPP;
 #endif
 #define GCODEVIEWER_MyBlueprintFunctionLibrary_generated_h
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_41_GENERATED_BODY \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_46_GENERATED_BODY \
 	friend GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMoveStructCPP(); \
 	static class UScriptStruct* StaticStruct();
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_RPC_WRAPPERS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execgetFloat32FromByteArray) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startIndex); \
+		P_FINISH; \
+		*(float*)Z_Param__Result=UMyBlueprintFunctionLibrary::getFloat32FromByteArray(Z_Param_binaryData,Z_Param_startIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execgetInt32FromByteArray) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startIndex); \
+		P_FINISH; \
+		*(int32*)Z_Param__Result=UMyBlueprintFunctionLibrary::getInt32FromByteArray(Z_Param_binaryData,Z_Param_startIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execparseBinarySTL) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startingIndex); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_linesToParse); \
+		P_GET_TARRAY_REF(FVector,Z_Param_Out_vertexArray); \
+		P_GET_TARRAY_REF(FVector,Z_Param_Out_normalArray); \
+		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_newIndex); \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=UMyBlueprintFunctionLibrary::parseBinarySTL(Z_Param_binaryData,Z_Param_startingIndex,Z_Param_linesToParse,Z_Param_Out_vertexArray,Z_Param_Out_normalArray,Z_Param_Out_newIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execloadBinarySTL) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_FullFilePath); \
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_binaryData); \
+		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_triangleCount); \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=UMyBlueprintFunctionLibrary::loadBinarySTL(Z_Param_FullFilePath,Z_Param_Out_binaryData,Z_Param_Out_triangleCount); \
+	} \
  \
 	DECLARE_FUNCTION(execextrudeTransform) \
 	{ \
@@ -65,7 +102,44 @@ struct FPrintMoveStructCPP;
 	}
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_RPC_WRAPPERS_NO_PURE_DECLS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execgetFloat32FromByteArray) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startIndex); \
+		P_FINISH; \
+		*(float*)Z_Param__Result=UMyBlueprintFunctionLibrary::getFloat32FromByteArray(Z_Param_binaryData,Z_Param_startIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execgetInt32FromByteArray) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startIndex); \
+		P_FINISH; \
+		*(int32*)Z_Param__Result=UMyBlueprintFunctionLibrary::getInt32FromByteArray(Z_Param_binaryData,Z_Param_startIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execparseBinarySTL) \
+	{ \
+		P_GET_TARRAY(uint8,Z_Param_binaryData); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_startingIndex); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_linesToParse); \
+		P_GET_TARRAY_REF(FVector,Z_Param_Out_vertexArray); \
+		P_GET_TARRAY_REF(FVector,Z_Param_Out_normalArray); \
+		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_newIndex); \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=UMyBlueprintFunctionLibrary::parseBinarySTL(Z_Param_binaryData,Z_Param_startingIndex,Z_Param_linesToParse,Z_Param_Out_vertexArray,Z_Param_Out_normalArray,Z_Param_Out_newIndex); \
+	} \
+ \
+	DECLARE_FUNCTION(execloadBinarySTL) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_FullFilePath); \
+		P_GET_TARRAY_REF(uint8,Z_Param_Out_binaryData); \
+		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_triangleCount); \
+		P_FINISH; \
+		*(bool*)Z_Param__Result=UMyBlueprintFunctionLibrary::loadBinarySTL(Z_Param_FullFilePath,Z_Param_Out_binaryData,Z_Param_Out_triangleCount); \
+	} \
  \
 	DECLARE_FUNCTION(execextrudeTransform) \
 	{ \
@@ -109,7 +183,7 @@ struct FPrintMoveStructCPP;
 	}
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_INCLASS_NO_PURE_DECLS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesUMyBlueprintFunctionLibrary(); \
 	friend GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary(); \
@@ -120,7 +194,7 @@ struct FPrintMoveStructCPP;
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_INCLASS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_INCLASS \
 	private: \
 	static void StaticRegisterNativesUMyBlueprintFunctionLibrary(); \
 	friend GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary(); \
@@ -131,7 +205,7 @@ struct FPrintMoveStructCPP;
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_STANDARD_CONSTRUCTORS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMyBlueprintFunctionLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMyBlueprintFunctionLibrary) \
@@ -143,7 +217,7 @@ private: \
 public:
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_ENHANCED_CONSTRUCTORS \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMyBlueprintFunctionLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -155,23 +229,23 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UMyBlueprintFunctionLibrary); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMyBlueprintFunctionLibrary)
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_64_PROLOG
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_GENERATED_BODY_LEGACY \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_69_PROLOG
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_RPC_WRAPPERS \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_INCLASS \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_STANDARD_CONSTRUCTORS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_RPC_WRAPPERS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_INCLASS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_GENERATED_BODY \
+#define GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_RPC_WRAPPERS_NO_PURE_DECLS \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_INCLASS_NO_PURE_DECLS \
-	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_67_ENHANCED_CONSTRUCTORS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_RPC_WRAPPERS_NO_PURE_DECLS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_INCLASS_NO_PURE_DECLS \
+	GCODEViewer_Source_GCODEViewer_MyBlueprintFunctionLibrary_h_72_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

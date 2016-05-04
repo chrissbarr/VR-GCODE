@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\GCODEViewer.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{7BD0CD69-3986-4CE9-816A-E885E276EE0A}</UniqueIdentifier>
+			<UniqueIdentifier>{402A9E54-A81D-4B6E-9012-723C757500FF}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GCODEViewer.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{52D1FAD7-4F5A-47B0-9FE7-4FE466884952}</UniqueIdentifier>
+			<UniqueIdentifier>{F672DC08-73B0-4C82-B8B7-FB0AAC96079A}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -28,7 +28,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\GCODEViewer">
-			<UniqueIdentifier>{414743DA-8F2B-4FA2-9E80-FD6C371BE24F}</UniqueIdentifier>
+			<UniqueIdentifier>{B62B9241-9D53-4AD8-B2D2-87BEE37DDE0F}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\GCODEViewer\GCODEViewer.Build.cs">
 			<Filter>Source\GCODEViewer</Filter>
@@ -43,6 +43,12 @@
 			<Filter>Source\GCODEViewer</Filter>
 		</ClCompile >
 		<ClInclude Include="..\..\Source\GCODEViewer\MyBlueprintFunctionLibrary.h">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\GCODEViewer\MyClass.cpp">
+			<Filter>Source\GCODEViewer</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\GCODEViewer\MyClass.h">
 			<Filter>Source\GCODEViewer</Filter>
 		</ClInclude >
 	</ItemGroup>
