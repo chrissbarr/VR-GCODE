@@ -9,6 +9,71 @@
 #include "GCODEViewer.generated.dep.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeGCODEViewer() {}
+static class UEnum* EGcodePrintMoveEnum_StaticEnum()
+{
+	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
+	static class UEnum* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum();
+		Singleton = GetStaticEnum(Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum, Z_Construct_UPackage__Script_GCODEViewer(), TEXT("EGcodePrintMoveEnum"));
+	}
+	return Singleton;
+}
+static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EGcodePrintMoveEnum(EGcodePrintMoveEnum_StaticEnum, TEXT("/Script/GCODEViewer"), TEXT("EGcodePrintMoveEnum"), false, nullptr, nullptr);
+static class UEnum* ESTLFileType_StaticEnum()
+{
+	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
+	static class UEnum* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_ESTLFileType();
+		Singleton = GetStaticEnum(Z_Construct_UEnum_GCODEViewer_ESTLFileType, Z_Construct_UPackage__Script_GCODEViewer(), TEXT("ESTLFileType"));
+	}
+	return Singleton;
+}
+static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ESTLFileType(ESTLFileType_StaticEnum, TEXT("/Script/GCODEViewer"), TEXT("ESTLFileType"), false, nullptr, nullptr);
+static class UEnum* EModelFileType_StaticEnum()
+{
+	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
+	static class UEnum* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EModelFileType();
+		Singleton = GetStaticEnum(Z_Construct_UEnum_GCODEViewer_EModelFileType, Z_Construct_UPackage__Script_GCODEViewer(), TEXT("EModelFileType"));
+	}
+	return Singleton;
+}
+static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EModelFileType(EModelFileType_StaticEnum, TEXT("/Script/GCODEViewer"), TEXT("EModelFileType"), false, nullptr, nullptr);
+class UScriptStruct* FPrintMove::StaticStruct()
+{
+	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
+	static class UScriptStruct* Singleton = NULL;
+	if (!Singleton)
+	{
+		extern GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMove();
+		extern GCODEVIEWER_API uint32 Get_Z_Construct_UScriptStruct_FPrintMove_CRC();
+		Singleton = GetStaticStruct(Z_Construct_UScriptStruct_FPrintMove, Z_Construct_UPackage__Script_GCODEViewer(), TEXT("PrintMove"), sizeof(FPrintMove), Get_Z_Construct_UScriptStruct_FPrintMove_CRC());
+	}
+	return Singleton;
+}
+static FCompiledInDeferStruct Z_CompiledInDeferStruct_UScriptStruct_FPrintMove(FPrintMove::StaticStruct, TEXT("/Script/GCODEViewer"), TEXT("PrintMove"), false, nullptr, nullptr);
+static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMove
+{
+	FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMove()
+	{
+		UScriptStruct::DeferCppStructOps(FName(TEXT("PrintMove")),new UScriptStruct::TCppStructOps<FPrintMove>);
+	}
+} ScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMove;
+	void AmodelViewer::StaticRegisterNativesAmodelViewer()
+	{
+		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "adjustOperationSpeed",(Native)&AmodelViewer::execadjustOperationSpeed);
+		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "jogGcodeLayers",(Native)&AmodelViewer::execjogGcodeLayers);
+		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "resetScaleAndOrientation",(Native)&AmodelViewer::execresetScaleAndOrientation);
+		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "rotateModel",(Native)&AmodelViewer::execrotateModel);
+		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "scaleModel",(Native)&AmodelViewer::execscaleModel);
+	}
+	IMPLEMENT_CLASS(AmodelViewer, 1942142555);
 static class UEnum* EPrintMoveEnum_StaticEnum()
 {
 	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
@@ -56,9 +121,24 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API class UClass* Z_Construct_UClass_AActor();
+	ENGINE_API class UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
+	PROCEDURALMESHCOMPONENT_API class UClass* Z_Construct_UClass_UProceduralMeshComponent_NoRegister();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FTransform();
 	ENGINE_API class UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 
+	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum();
+	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_ESTLFileType();
+	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EModelFileType();
+	GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMove();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AmodelViewer_adjustOperationSpeed();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AmodelViewer_jogGcodeLayers();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AmodelViewer_resetScaleAndOrientation();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AmodelViewer_rotateModel();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AmodelViewer_scaleModel();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AmodelViewer_NoRegister();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AmodelViewer();
 	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EPrintMoveEnum();
 	GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMoveStructCPP();
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_extrudeTransform();
@@ -72,6 +152,392 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary_NoRegister();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary();
 	GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
+	UEnum* Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum()
+	{
+		UPackage* Outer=Z_Construct_UPackage__Script_GCODEViewer();
+		extern uint32 Get_Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum_CRC();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("EGcodePrintMoveEnum"), 0, Get_Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum_CRC(), false);
+		if (!ReturnEnum)
+		{
+			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("EGcodePrintMoveEnum"), RF_Public|RF_Transient|RF_MarkAsNative) UEnum(FObjectInitializer());
+			TArray<TPair<FName, uint8>> EnumNames;
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EGcodePrintMoveEnum::PE_Travel")), 0));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EGcodePrintMoveEnum::PE_Perimeter")), 1));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EGcodePrintMoveEnum::PE_Infill")), 2));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EGcodePrintMoveEnum::PE_Support")), 3));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EGcodePrintMoveEnum::PE_MAX")), 4));
+			ReturnEnum->SetEnums(EnumNames, UEnum::ECppForm::EnumClass);
+			ReturnEnum->CppType = TEXT("EGcodePrintMoveEnum");
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnEnum->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnEnum, TEXT("BlueprintType"), TEXT("true"));
+			MetaData->SetValue(ReturnEnum, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_Infill.DisplayName"), TEXT("Infill"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_Perimeter.DisplayName"), TEXT("Perimeter"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_Support.DisplayName"), TEXT("Support"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_Travel.DisplayName"), TEXT("Travel"));
+			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("\"BlueprintType\" is essential to include"));
+#endif
+		}
+		return ReturnEnum;
+	}
+	uint32 Get_Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum_CRC() { return 4260718076U; }
+	UEnum* Z_Construct_UEnum_GCODEViewer_ESTLFileType()
+	{
+		UPackage* Outer=Z_Construct_UPackage__Script_GCODEViewer();
+		extern uint32 Get_Z_Construct_UEnum_GCODEViewer_ESTLFileType_CRC();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("ESTLFileType"), 0, Get_Z_Construct_UEnum_GCODEViewer_ESTLFileType_CRC(), false);
+		if (!ReturnEnum)
+		{
+			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ESTLFileType"), RF_Public|RF_Transient|RF_MarkAsNative) UEnum(FObjectInitializer());
+			TArray<TPair<FName, uint8>> EnumNames;
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("ESTLFileType::PE_BINARY")), 0));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("ESTLFileType::PE_ASCII")), 1));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("ESTLFileType::PE_MAX")), 2));
+			ReturnEnum->SetEnums(EnumNames, UEnum::ECppForm::EnumClass);
+			ReturnEnum->CppType = TEXT("ESTLFileType");
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnEnum->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnEnum, TEXT("BlueprintType"), TEXT("true"));
+			MetaData->SetValue(ReturnEnum, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_ASCII.DisplayName"), TEXT("ASCII STL"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_BINARY.DisplayName"), TEXT("Binary STL"));
+			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("\"BlueprintType\" is essential to include"));
+#endif
+		}
+		return ReturnEnum;
+	}
+	uint32 Get_Z_Construct_UEnum_GCODEViewer_ESTLFileType_CRC() { return 1079824090U; }
+	UEnum* Z_Construct_UEnum_GCODEViewer_EModelFileType()
+	{
+		UPackage* Outer=Z_Construct_UPackage__Script_GCODEViewer();
+		extern uint32 Get_Z_Construct_UEnum_GCODEViewer_EModelFileType_CRC();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("EModelFileType"), 0, Get_Z_Construct_UEnum_GCODEViewer_EModelFileType_CRC(), false);
+		if (!ReturnEnum)
+		{
+			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("EModelFileType"), RF_Public|RF_Transient|RF_MarkAsNative) UEnum(FObjectInitializer());
+			TArray<TPair<FName, uint8>> EnumNames;
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EModelFileType::PE_STL")), 0));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EModelFileType::PE_GCODE")), 1));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EModelFileType::PE_STEP")), 2));
+			EnumNames.Add(TPairInitializer<FName, uint8>(FName(TEXT("EModelFileType::PE_MAX")), 3));
+			ReturnEnum->SetEnums(EnumNames, UEnum::ECppForm::EnumClass);
+			ReturnEnum->CppType = TEXT("EModelFileType");
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnEnum->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnEnum, TEXT("BlueprintType"), TEXT("true"));
+			MetaData->SetValue(ReturnEnum, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_GCODE.DisplayName"), TEXT("GCODE File"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_STEP.DisplayName"), TEXT("STEP File"));
+			MetaData->SetValue(ReturnEnum, TEXT("PE_STL.DisplayName"), TEXT("STL File"));
+			MetaData->SetValue(ReturnEnum, TEXT("ToolTip"), TEXT("\"BlueprintType\" is essential to include"));
+#endif
+		}
+		return ReturnEnum;
+	}
+	uint32 Get_Z_Construct_UEnum_GCODEViewer_EModelFileType_CRC() { return 2860816236U; }
+	UScriptStruct* Z_Construct_UScriptStruct_FPrintMove()
+	{
+		UPackage* Outer = Z_Construct_UPackage__Script_GCODEViewer();
+		extern uint32 Get_Z_Construct_UScriptStruct_FPrintMove_CRC();
+		static UScriptStruct* ReturnStruct = FindExistingStructIfHotReloadOrDynamic(Outer, TEXT("PrintMove"), sizeof(FPrintMove), Get_Z_Construct_UScriptStruct_FPrintMove_CRC(), false);
+		if (!ReturnStruct)
+		{
+			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("PrintMove"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), NULL, new UScriptStruct::TCppStructOps<FPrintMove>, EStructFlags(0x00000201));
+			UProperty* NewProp_moveType = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("moveType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(CPP_PROPERTY_BASE(moveType, FPrintMove), 0x0010000000000005, Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum());
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(layerChange, FPrintMove, bool);
+			UProperty* NewProp_layerChange = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("layerChange"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(layerChange, FPrintMove), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(layerChange, FPrintMove), sizeof(bool), true);
+			UProperty* NewProp_endPoint = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("endPoint"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(endPoint, FPrintMove), 0x0010000000000005, Z_Construct_UScriptStruct_FVector());
+			ReturnStruct->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnStruct->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnStruct, TEXT("BlueprintType"), TEXT("true"));
+			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(NewProp_moveType, TEXT("Category"), TEXT("Range"));
+			MetaData->SetValue(NewProp_moveType, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(NewProp_moveType, TEXT("ToolTip"), TEXT("Max range value"));
+			MetaData->SetValue(NewProp_layerChange, TEXT("Category"), TEXT("Range"));
+			MetaData->SetValue(NewProp_layerChange, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(NewProp_layerChange, TEXT("ToolTip"), TEXT("Min range value"));
+			MetaData->SetValue(NewProp_endPoint, TEXT("Category"), TEXT("Range"));
+			MetaData->SetValue(NewProp_endPoint, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+			MetaData->SetValue(NewProp_endPoint, TEXT("ToolTip"), TEXT("Min range value"));
+#endif
+		}
+		return ReturnStruct;
+	}
+	uint32 Get_Z_Construct_UScriptStruct_FPrintMove_CRC() { return 2086566175U; }
+	UFunction* Z_Construct_UFunction_AmodelViewer_adjustOperationSpeed()
+	{
+		UObject* Outer=Z_Construct_UClass_AmodelViewer();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("adjustOperationSpeed"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Input"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AmodelViewer_jogGcodeLayers()
+	{
+		struct modelViewer_eventjogGcodeLayers_Parms
+		{
+			int32 layersToJog;
+		};
+		UObject* Outer=Z_Construct_UClass_AmodelViewer();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("jogGcodeLayers"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(modelViewer_eventjogGcodeLayers_Parms));
+			UProperty* NewProp_layersToJog = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("layersToJog"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(layersToJog, modelViewer_eventjogGcodeLayers_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Input"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AmodelViewer_resetScaleAndOrientation()
+	{
+		UObject* Outer=Z_Construct_UClass_AmodelViewer();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("resetScaleAndOrientation"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Input"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AmodelViewer_rotateModel()
+	{
+		struct modelViewer_eventrotateModel_Parms
+		{
+			float pitch;
+			float yaw;
+		};
+		UObject* Outer=Z_Construct_UClass_AmodelViewer();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("rotateModel"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(modelViewer_eventrotateModel_Parms));
+			UProperty* NewProp_yaw = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("yaw"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(yaw, modelViewer_eventrotateModel_Parms), 0x0010000000000080);
+			UProperty* NewProp_pitch = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("pitch"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(pitch, modelViewer_eventrotateModel_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Input"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AmodelViewer_scaleModel()
+	{
+		struct modelViewer_eventscaleModel_Parms
+		{
+			float val;
+		};
+		UObject* Outer=Z_Construct_UClass_AmodelViewer();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("scaleModel"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(modelViewer_eventscaleModel_Parms));
+			UProperty* NewProp_val = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("val"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(val, modelViewer_eventscaleModel_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Input"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_AmodelViewer_NoRegister()
+	{
+		return AmodelViewer::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AmodelViewer()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_GCODEViewer();
+			OuterClass = AmodelViewer::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+				OuterClass->LinkChild(Z_Construct_UFunction_AmodelViewer_adjustOperationSpeed());
+				OuterClass->LinkChild(Z_Construct_UFunction_AmodelViewer_jogGcodeLayers());
+				OuterClass->LinkChild(Z_Construct_UFunction_AmodelViewer_resetScaleAndOrientation());
+				OuterClass->LinkChild(Z_Construct_UFunction_AmodelViewer_rotateModel());
+				OuterClass->LinkChild(Z_Construct_UFunction_AmodelViewer_scaleModel());
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_modelCentreOffset = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("modelCentreOffset"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(modelCentreOffset, AmodelViewer), 0x0010000000000005, Z_Construct_UScriptStruct_FVector());
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(doFaster, AmodelViewer, bool);
+				UProperty* NewProp_doFaster = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("doFaster"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(doFaster, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(doFaster, AmodelViewer), sizeof(bool), true);
+				UProperty* NewProp_maxSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("maxSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(maxSize, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_minSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("minSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(minSize, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_loadRateModifier = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadRateModifier"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(loadRateModifier, AmodelViewer), 0x0010000000000005);
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(selected, AmodelViewer, bool);
+				UProperty* NewProp_selected = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("selected"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(selected, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(selected, AmodelViewer), sizeof(bool), true);
+				UProperty* NewProp_currentExtrusionScrubLocation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("currentExtrusionScrubLocation"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(currentExtrusionScrubLocation, AmodelViewer), 0x0010000000000005, Z_Construct_UScriptStruct_FVector());
+				UProperty* NewProp_gcodeLayerTotalCount = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("gcodeLayerTotalCount"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(gcodeLayerTotalCount, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_gcodeLayerRenderIndex = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("gcodeLayerRenderIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(gcodeLayerRenderIndex, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_AssetM_ModelMaterial = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("AssetM_ModelMaterial"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(AssetM_ModelMaterial, AmodelViewer), 0x0010000000000005, Z_Construct_UClass_UMaterialInterface_NoRegister());
+				UProperty* NewProp_AssetSM_PrintExtrusionLine = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("AssetSM_PrintExtrusionLine"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(AssetSM_PrintExtrusionLine, AmodelViewer), 0x0010000000000005, Z_Construct_UClass_UStaticMesh_NoRegister());
+				UProperty* NewProp_modelProceduralMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("modelProceduralMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(modelProceduralMesh, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_UProceduralMeshComponent_NoRegister());
+				UProperty* NewProp_gcodeTransformArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("gcodeTransformArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(gcodeTransformArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_gcodeTransformArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_gcodeTransformArray, TEXT("gcodeTransformArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FTransform());
+				UProperty* NewProp_gcodePrintMoveArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("gcodePrintMoveArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(gcodePrintMoveArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_gcodePrintMoveArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_gcodePrintMoveArray, TEXT("gcodePrintMoveArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FPrintMove());
+				UProperty* NewProp_stlTriangleCount = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlTriangleCount"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(stlTriangleCount, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_stlTriangleIndex = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlTriangleIndex"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(stlTriangleIndex, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_stlTriangleArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlTriangleArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(stlTriangleArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_stlTriangleArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_stlTriangleArray, TEXT("stlTriangleArray"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+				UProperty* NewProp_stlVertexArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlVertexArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(stlVertexArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_stlVertexArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_stlVertexArray, TEXT("stlVertexArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FVector());
+				UProperty* NewProp_stlNormalArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlNormalArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(stlNormalArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_stlNormalArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_stlNormalArray, TEXT("stlNormalArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FVector());
+				UProperty* NewProp_fileBinaryArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileBinaryArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(fileBinaryArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_fileBinaryArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_fileBinaryArray, TEXT("fileBinaryArray"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+				UProperty* NewProp_fileStringArray = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileStringArray"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(fileStringArray, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_fileStringArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_fileStringArray, TEXT("fileStringArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+				UProperty* NewProp_stlType = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(CPP_PROPERTY_BASE(stlType, AmodelViewer), 0x0010000000000005, Z_Construct_UEnum_GCODEViewer_ESTLFileType());
+				UProperty* NewProp_fileType = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(CPP_PROPERTY_BASE(fileType, AmodelViewer), 0x0010000000000005, Z_Construct_UEnum_GCODEViewer_EModelFileType());
+				UProperty* NewProp_fullFilePath = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fullFilePath"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(fullFilePath, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_loadingProgress = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadingProgress"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(loadingProgress, AmodelViewer), 0x0010000000000005);
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(modelConstructed, AmodelViewer, bool);
+				UProperty* NewProp_modelConstructed = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("modelConstructed"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(modelConstructed, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(modelConstructed, AmodelViewer), sizeof(bool), true);
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(fileParsed, AmodelViewer, bool);
+				UProperty* NewProp_fileParsed = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileParsed"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(fileParsed, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(fileParsed, AmodelViewer), sizeof(bool), true);
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(fileLoaded, AmodelViewer, bool);
+				UProperty* NewProp_fileLoaded = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileLoaded"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(fileLoaded, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(fileLoaded, AmodelViewer), sizeof(bool), true);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AmodelViewer_adjustOperationSpeed(), "adjustOperationSpeed"); // 535628135
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AmodelViewer_jogGcodeLayers(), "jogGcodeLayers"); // 4148727560
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AmodelViewer_resetScaleAndOrientation(), "resetScaleAndOrientation"); // 3231141692
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AmodelViewer_rotateModel(), "rotateModel"); // 611472419
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AmodelViewer_scaleModel(), "scaleModel"); // 2113693115
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_modelCentreOffset, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_modelCentreOffset, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_modelCentreOffset, TEXT("ToolTip"), TEXT("Centre coordinate of model"));
+				MetaData->SetValue(NewProp_doFaster, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_doFaster, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_doFaster, TEXT("ToolTip"), TEXT("Adjusts speed of operations"));
+				MetaData->SetValue(NewProp_maxSize, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_maxSize, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_maxSize, TEXT("ToolTip"), TEXT("Maximum model scale"));
+				MetaData->SetValue(NewProp_minSize, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_minSize, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_minSize, TEXT("ToolTip"), TEXT("Minimum model scale"));
+				MetaData->SetValue(NewProp_loadRateModifier, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_loadRateModifier, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_loadRateModifier, TEXT("ToolTip"), TEXT("Is selected by user?"));
+				MetaData->SetValue(NewProp_selected, TEXT("Category"), TEXT("Interactivity"));
+				MetaData->SetValue(NewProp_selected, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_selected, TEXT("ToolTip"), TEXT("Is selected by user?"));
+				MetaData->SetValue(NewProp_currentExtrusionScrubLocation, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_currentExtrusionScrubLocation, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_currentExtrusionScrubLocation, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_gcodeLayerTotalCount, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_gcodeLayerTotalCount, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_gcodeLayerTotalCount, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_gcodeLayerRenderIndex, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_gcodeLayerRenderIndex, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_gcodeLayerRenderIndex, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_AssetM_ModelMaterial, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_AssetM_ModelMaterial, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_AssetM_ModelMaterial, TEXT("ToolTip"), TEXT("Material Asset for STL Models"));
+				MetaData->SetValue(NewProp_AssetSM_PrintExtrusionLine, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_AssetSM_PrintExtrusionLine, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_AssetSM_PrintExtrusionLine, TEXT("ToolTip"), TEXT("SM Asset for gcode extrusion"));
+				MetaData->SetValue(NewProp_modelProceduralMesh, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_modelProceduralMesh, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_modelProceduralMesh, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_modelProceduralMesh, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_gcodeTransformArray, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_gcodeTransformArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_gcodeTransformArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_gcodePrintMoveArray, TEXT("Category"), TEXT("GCODE"));
+				MetaData->SetValue(NewProp_gcodePrintMoveArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_gcodePrintMoveArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_stlTriangleCount, TEXT("Category"), TEXT("STL"));
+				MetaData->SetValue(NewProp_stlTriangleCount, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlTriangleCount, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_stlTriangleIndex, TEXT("Category"), TEXT("STL"));
+				MetaData->SetValue(NewProp_stlTriangleIndex, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlTriangleIndex, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_stlTriangleArray, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_stlTriangleArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlTriangleArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_stlVertexArray, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_stlVertexArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlVertexArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_stlNormalArray, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_stlNormalArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlNormalArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_fileBinaryArray, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_fileBinaryArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fileBinaryArray, TEXT("ToolTip"), TEXT("Binary array of file contents"));
+				MetaData->SetValue(NewProp_fileStringArray, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_fileStringArray, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fileStringArray, TEXT("ToolTip"), TEXT("String array of file contents"));
+				MetaData->SetValue(NewProp_stlType, TEXT("Category"), TEXT("STL"));
+				MetaData->SetValue(NewProp_stlType, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_stlType, TEXT("ToolTip"), TEXT("If STL, Binary or ASCII"));
+				MetaData->SetValue(NewProp_fileType, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_fileType, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fileType, TEXT("ToolTip"), TEXT("Type of file to load"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("ToolTip"), TEXT("Path to file to load"));
+				MetaData->SetValue(NewProp_loadingProgress, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_loadingProgress, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_loadingProgress, TEXT("ToolTip"), TEXT("Progress made in loading file"));
+				MetaData->SetValue(NewProp_modelConstructed, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_modelConstructed, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_modelConstructed, TEXT("ToolTip"), TEXT("Model has been constructed"));
+				MetaData->SetValue(NewProp_fileParsed, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_fileParsed, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fileParsed, TEXT("ToolTip"), TEXT("File has been parsed"));
+				MetaData->SetValue(NewProp_fileLoaded, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_fileLoaded, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_fileLoaded, TEXT("ToolTip"), TEXT("File has been read in"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AmodelViewer(Z_Construct_UClass_AmodelViewer, &AmodelViewer::StaticClass, TEXT("AmodelViewer"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AmodelViewer);
 	UEnum* Z_Construct_UEnum_GCODEViewer_EPrintMoveEnum()
 	{
 		UPackage* Outer=Z_Construct_UPackage__Script_GCODEViewer();
@@ -444,8 +910,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/GCODEViewer")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x6E015766;
-			Guid.B = 0x9EA1B325;
+			Guid.A = 0x4314C9D3;
+			Guid.B = 0x8F18B2CE;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

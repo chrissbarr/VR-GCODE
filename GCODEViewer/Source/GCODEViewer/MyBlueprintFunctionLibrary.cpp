@@ -188,13 +188,6 @@ bool UMyBlueprintFunctionLibrary::parseBinarySTL(const TArray<uint8> binaryData,
 	int arrayIndex = 0;
 	bool finishedData = false;
 
-	//for (int i = index; i < 80; i++) {
-		//UE_LOG(LogTemp, Warning, TEXT("%d"), binaryData[i]);
-	//}
-	
-
-	
-
 	while (index < FMath::Min(binaryData.Num(), startingIndex + (verticesToParse*50))) {
 
 		//UE_LOG(LogTemp, Warning, TEXT("Calculating Normal"));
@@ -229,7 +222,7 @@ bool UMyBlueprintFunctionLibrary::parseBinarySTL(const TArray<uint8> binaryData,
 }
 
 float UMyBlueprintFunctionLibrary::getFloat32FromByteArray(const TArray<uint8> binaryData, const int startIndex) {
-	static FloatUnionData tempFloat;
+	static FloatAUnionData tempFloat;
 
 	tempFloat.byteData = getInt32FromByteArray(binaryData, startIndex);
 

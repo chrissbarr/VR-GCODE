@@ -5,6 +5,9 @@
 	DO NOT modify this manually! Edit the corresponding .h files instead!
 ===========================================================================*/
 
+#ifndef GCODEVIEWER_modelViewer_generated_h
+	#include "modelViewer.h"
+#endif
 #ifndef GCODEVIEWER_MyBlueprintFunctionLibrary_generated_h
 	#include "MyBlueprintFunctionLibrary.h"
 #endif
