@@ -9,10 +9,10 @@
  * 
  */
 
-typedef union floatdata {
+typedef union floatAdata {
 	float f;
 	unsigned long byteData;
-} FloatUnionData;
+} FloatAUnionData;
 
 UENUM(BlueprintType)		//"BlueprintType" is essential to include
 enum class EPrintMoveEnum : uint8
