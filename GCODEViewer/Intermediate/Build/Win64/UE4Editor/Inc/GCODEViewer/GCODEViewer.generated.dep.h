@@ -5,6 +5,12 @@
 	DO NOT modify this manually! Edit the corresponding .h files instead!
 ===========================================================================*/
 
+#ifndef GCODEVIEWER_FileDisplayTile_generated_h
+	#include "FileDisplayTile.h"
+#endif
+#ifndef GCODEVIEWER_FileManagerActor_generated_h
+	#include "FileManagerActor.h"
+#endif
 #ifndef GCODEVIEWER_modelViewer_generated_h
 	#include "modelViewer.h"
 #endif
