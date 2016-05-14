@@ -109,12 +109,12 @@ void AmodelViewer::scaleModel(float val) {
 		SetActorScale3D(currentScale);
 	}	
 
-	float scaleDelta = oldScale.Z - GetActorScale3D().Z;
+	
 
-	if (FMath::Abs(scaleDelta) > 0.001) {
-		if (fileType == EModelFileType::PE_GCODE) {
-
-
+	//fix base of gcode files in place (so model scales 'upwards')
+	if (fileType == EModelFileType::PE_GCODE) {
+		float scaleDelta = oldScale.Z - GetActorScale3D().Z;
+		if (FMath::Abs(scaleDelta) > 0.001) {
 			AddActorWorldOffset(FVector(0, 0, -scaleDelta * modelCentreOffset.Z));
 		}
 	}
@@ -123,8 +123,11 @@ void AmodelViewer::scaleModel(float val) {
 }
 
 void AmodelViewer::rotateModel(float pitch, float yaw) {
+	if (pitch != 0 || yaw != 0) {
+		UE_LOG(LogTemp, Warning, TEXT("Model rotated."));
+	}
 	float mul = 1 + (FMath::Sign(FMath::Max(FMath::Abs(pitch), FMath::Abs(yaw)) * 1 * (int)doFaster));
-	AddActorWorldRotation(FRotator(pitch*mul,0, yaw*mul), false, NULL, ETeleportType::None);
+	AddActorLocalRotation(FRotator(pitch*mul,0, yaw*mul), false, NULL, ETeleportType::None);
 }
 
 void AmodelViewer::jogGcodeLayers(int layersToJog) {
@@ -136,7 +139,7 @@ void AmodelViewer::jogGcodeLayers(int layersToJog) {
 	}
 
 
-	gcodeExtrusionRenderIndex = FMath::Clamp(gcodeExtrusionRenderIndex + layersToJog * jogBy,0, gcodeExtrusionTotalCount-1);
+	gcodeExtrusionRenderIndex = FMath::Clamp(gcodeExtrusionRenderIndex + layersToJog * jogBy,0, gcodeExtrusionTotalCount);
 
 	//if (gcodeExtrusionRenderIndex != gcodeExtrusionRenderIndexPrev) {
 	//	UE_LOG(LogTemp, Warning, TEXT("Extrusion render index: %d"), gcodeExtrusionRenderIndex);
@@ -261,13 +264,16 @@ void AmodelViewer::scrubThroughExtrusion() {
 			stoppingLayerTotalPrevCount = totalPrevLayerCount;
 		}
 
-
 		if (startingLayer != -1 && stoppingLayer != -1) { 
 			break; 
 		}
 		else {
 			totalPrevLayerCount += gcodePerimeterInstances[i]->GetInstanceCount();	
 		}
+	}
+
+	if (startingLayer == gcodePerimeterInstances.Num() - 1) {
+		stoppingLayer = startingLayer;
 	}
 
 	if (startingLayer != -1 && stoppingLayer != -1) {
@@ -277,6 +283,8 @@ void AmodelViewer::scrubThroughExtrusion() {
 		int startingLayerStartIndex = startIndex - startingLayerTotalPrevCount;
 		int startingLayerStopIndex = FMath::Min(stopIndex - startingLayerTotalPrevCount, gcodePerimeterInstances[startingLayer]->GetInstanceCount());
 
+		UE_LOG(LogTemp, Warning, TEXT("min(%d,%d)"), stopIndex - startingLayerTotalPrevCount, gcodePerimeterInstances[startingLayer]->GetInstanceCount());
+
 		UE_LOG(LogTemp, Warning, TEXT("First layer extrusion %d to %d"), startingLayerStartIndex, startingLayerStopIndex);
 
 		int ticks = 0;
@@ -284,8 +292,10 @@ void AmodelViewer::scrubThroughExtrusion() {
 		for (int i = startingLayerStartIndex; i < startingLayerStopIndex; i++) {
 			
 			if (forward) {
-				UE_LOG(LogTemp, Warning, TEXT("first layer, render extrusion %d"), startIndex + ticks);
-				gcodePerimeterInstances[startingLayer]->UpdateInstanceTransform(i, gcodeTransformArray[startIndex + ticks], false, true);
+				if (startIndex + ticks < gcodeTransformArray.Num()) {
+					UE_LOG(LogTemp, Warning, TEXT("first layer, render extrusion %d"), startIndex + ticks);
+					gcodePerimeterInstances[startingLayer]->UpdateInstanceTransform(i, gcodeTransformArray[startIndex + ticks], false, true);
+				}
 			}
 			else {
 				gcodePerimeterInstances[startingLayer]->UpdateInstanceTransform(i, FTransform(FRotator(0, 0, 0), FVector(0, 0, 0), FVector(0, 0, 0)), false, true);
@@ -310,18 +320,54 @@ void AmodelViewer::scrubThroughExtrusion() {
 				ticks++;
 
 			}
+
+
+			//if there are layers between where we started and stopped, set them either fully visible or invisible
+
+			ticks = gcodePerimeterInstances[startingLayer]->GetInstanceCount();
+
+			if (FMath::Abs(startingLayer - stoppingLayer) > 1) {
+				for (int i = startingLayer + 1; i < stoppingLayer; i++) {
+					for (int j = 0; j < gcodePerimeterInstances[i]->GetInstanceCount(); j++) {
+						if (forward) {
+							gcodePerimeterInstances[i]->UpdateInstanceTransform(j, gcodeTransformArray[startingLayerTotalPrevCount + ticks], false, true);
+						}
+						else {
+							gcodePerimeterInstances[i]->UpdateInstanceTransform(j, FTransform(FRotator(0, 0, 0), FVector(0, 0, 0), FVector(0, 0, 0)), false, true);
+						}
+						ticks++;
+					}
+				}
+			}
+
 		}
 
+		//set layer colours accordingly
+		if (forward) {
+			//highlight highest layer
+			gcodePerimeterInstances[stoppingLayer]->SetMaterial(0, AssetM_ExtrusionMaterialActive);
 
+			//return previous colours to normal
+			for (int i = 0; i < FMath::Abs(startingLayer - stoppingLayer); i++) {
+				gcodePerimeterInstances[stoppingLayer - (i+1)]->SetMaterial(0, AssetM_ExtrusionMaterialDefault);
+			}
+		}
 
-		//if (forward) {
-			currentExtrusionScrubLocation = gcodeTransformArray[gcodeExtrusionRenderIndex].GetLocation();
-		//}
-		//else {
-			//currentExtrusionScrubLocation = gcodeTransformArray[startIndex].GetLocation();
-		//}
+		if (!forward) {
+			gcodePerimeterInstances[startingLayer]->SetMaterial(0, AssetM_ExtrusionMaterialActive);
+		}
+		
+		//update nozzle position
+		currentExtrusionScrubLocation = gcodeTransformArray[FMath::Clamp(gcodeExtrusionRenderIndex,0, gcodeTransformArray.Num()-1)].GetLocation();
+
 
 		
+	}
+	else {
+		if(startingLayer == -1)
+			UE_LOG(LogTemp, Warning, TEXT("Start layer not detected"));
+		if(stoppingLayer == -1)
+			UE_LOG(LogTemp, Warning, TEXT("Stop layer not detected"));
 	}
 
 	
@@ -436,12 +482,14 @@ bool AmodelViewer::constructGcodeModel() {
 
 			FTransform spawnTransform = extrudeTransform(startPoint, endPoint, modelCentreOffset);
 
+			currentExtrusionScrubLocation = spawnTransform.GetLocation();
 			
 
 			if (gcodePrintMoveArray[i].moveType == EGcodePrintMoveEnum::PE_Perimeter) {
 				gcodePerimeterInstances.Last()->AddInstance(spawnTransform);
 				gcodeExtrusionTotalCount++;
 				gcodeExtrusionRenderIndex++;
+				gcodeExtrusionRenderIndexPrev = gcodeExtrusionRenderIndex;
 				gcodeTransformArray.Add(spawnTransform);
 			}
 			else {
@@ -451,6 +499,7 @@ bool AmodelViewer::constructGcodeModel() {
 
 		}
 		else { 
+			UE_LOG(LogTemp, Warning, TEXT("Total extrusions in gcode: %d"), gcodeExtrusionTotalCount); 
 			subScrubbingEnabled = true;
 			return true; 
 		}
@@ -470,14 +519,24 @@ void AmodelViewer::gcodeNewInstanceLayer(TArray<UInstancedStaticMeshComponent*> 
 	newInstance->AttachTo(RootComponent);
 	AddOwnedComponent(newInstance);
 	newInstance->SetRelativeLocation(FVector(0,0,0),false,NULL,ETeleportType::None);
+	newInstance->SetMaterial(0, AssetM_ExtrusionMaterialActive);
+
+	if (addToArray.Num() > 0) {
+		addToArray.Last()->SetMaterial(0, AssetM_ExtrusionMaterialDefault);
+	}
+
+	addToArray.Add(newInstance);
+	addToArray.Last()->SetStaticMesh(AssetSM_PrintExtrusionLine);
+
+	
+
 
 	//return newComponent;
 
 	//UInstancedStaticMeshComponent* newInstance = NewObject<UInstancedStaticMeshComponent>(this);
 	//newInstance->RegisterComponent();
 
-	addToArray.Add(newInstance);
-	addToArray.Last()->SetStaticMesh(AssetSM_PrintExtrusionLine);
+
 }
 
 FTransform AmodelViewer::extrudeTransform(const FVector startPoint, const FVector endPoint, const FVector modelCentre) {
@@ -707,7 +766,7 @@ bool AmodelViewer::parseGcodeFile() {
 	return fileExhausted;
 }
 
-FPrintMove AmodelViewer::gcodeParseG1Line(FString gcodeLine) {
+FPrintMove AmodelViewer::gcodeParseG1Line(FString & gcodeLine) {
 	FPrintMove thisMove;
 
 	float xCoord, yCoord, zCoord;
@@ -766,7 +825,7 @@ bool AmodelViewer::loadStlFile() {
 return	true;
 }
 
-float AmodelViewer::gcodeGetAxisCoordFromLine(const FString gcodeLine, const FString axisPrefix, bool& foundAxis) {
+float AmodelViewer::gcodeGetAxisCoordFromLine(FString & gcodeLine, const FString axisPrefix, bool& foundAxis) {
 	int axisIndex = gcodeLine.Find(axisPrefix, ESearchCase::IgnoreCase, ESearchDir::FromStart, -1);
 	float axisCoordinate = 0;
 

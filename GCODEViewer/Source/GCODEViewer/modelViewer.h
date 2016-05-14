@@ -154,6 +154,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = GCODE)
 	UStaticMesh* AssetSM_PrintExtrusionLine;
 
+	/** Material Asset for gcode extrusion */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = GCODE)
+	UMaterialInterface* AssetM_ExtrusionMaterialDefault;
+
+	/** Material Asset for gcode extrusion */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = GCODE)
+	UMaterialInterface* AssetM_ExtrusionMaterialActive;
+
 	/** Material Asset for STL Models */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = GCODE)
 	UMaterialInterface* AssetM_ModelMaterial;
@@ -225,8 +233,8 @@ public:
 
 	FTransform extrudeTransform(const FVector startPoint, const FVector endPoint, const FVector modelCentre);
 
-	FPrintMove gcodeParseG1Line(FString gcodeLine);
-	float gcodeGetAxisCoordFromLine(const FString gcodeLine, const FString axisPrefix, bool& foundAxis);
+	FPrintMove gcodeParseG1Line(FString & gcodeLine);
+	float gcodeGetAxisCoordFromLine(FString & gcodeLine, const FString axisPrefix, bool& foundAxis);
 	void gcodeNewInstanceLayer(TArray<UInstancedStaticMeshComponent*> & addToArray);
 
 	bool stlFileIsAscii(TArray<FString> & fileStringArray);
