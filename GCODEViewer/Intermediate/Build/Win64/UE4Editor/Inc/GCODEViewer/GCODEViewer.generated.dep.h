@@ -11,9 +11,21 @@
 #ifndef GCODEVIEWER_FileManagerActor_generated_h
 	#include "FileManagerActor.h"
 #endif
+#ifndef GCODEVIEWER_InteractiveObjectActor_generated_h
+	#include "InteractiveObjectActor.h"
+#endif
+#ifndef GCODEVIEWER_ImportedObject_generated_h
+	#include "ImportedObject.h"
+#endif
 #ifndef GCODEVIEWER_modelViewer_generated_h
 	#include "modelViewer.h"
 #endif
 #ifndef GCODEVIEWER_MyBlueprintFunctionLibrary_generated_h
 	#include "MyBlueprintFunctionLibrary.h"
+#endif
+#ifndef GCODEVIEWER_UserPawnMovementComponent_generated_h
+	#include "UserPawnMovementComponent.h"
+#endif
+#ifndef GCODEVIEWER_UserPawn_generated_h
+	#include "UserPawn.h"
 #endif

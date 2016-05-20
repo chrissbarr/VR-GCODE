@@ -13,12 +13,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define GCODEVIEWER_modelViewer_generated_h
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_42_GENERATED_BODY \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_44_GENERATED_BODY \
 	friend GCODEVIEWER_API class UScriptStruct* Z_Construct_UScriptStruct_FPrintMove(); \
 	static class UScriptStruct* StaticStruct();
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_RPC_WRAPPERS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execjogGcodeLayers) \
 	{ \
@@ -55,7 +55,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_RPC_WRAPPERS_NO_PURE_DECLS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execjogGcodeLayers) \
 	{ \
@@ -92,29 +92,29 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_INCLASS_NO_PURE_DECLS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesAmodelViewer(); \
 	friend GCODEVIEWER_API class UClass* Z_Construct_UClass_AmodelViewer(); \
 	public: \
-	DECLARE_CLASS(AmodelViewer, AActor, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/GCODEViewer"), NO_API) \
+	DECLARE_CLASS(AmodelViewer, AImportedObject, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/GCODEViewer"), NO_API) \
 	DECLARE_SERIALIZER(AmodelViewer) \
 	/** Indicates whether the class is compiled into the engine */ \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_INCLASS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_INCLASS \
 	private: \
 	static void StaticRegisterNativesAmodelViewer(); \
 	friend GCODEVIEWER_API class UClass* Z_Construct_UClass_AmodelViewer(); \
 	public: \
-	DECLARE_CLASS(AmodelViewer, AActor, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/GCODEViewer"), NO_API) \
+	DECLARE_CLASS(AmodelViewer, AImportedObject, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/GCODEViewer"), NO_API) \
 	DECLARE_SERIALIZER(AmodelViewer) \
 	/** Indicates whether the class is compiled into the engine */ \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_STANDARD_CONSTRUCTORS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AmodelViewer(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AmodelViewer) \
@@ -126,7 +126,7 @@ private: \
 public:
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_ENHANCED_CONSTRUCTORS \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private copy-constructor, should never be used */ \
 	NO_API AmodelViewer(const AmodelViewer& InCopy); \
@@ -136,23 +136,23 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AmodelViewer); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AmodelViewer)
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_65_PROLOG
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_GENERATED_BODY_LEGACY \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_67_PROLOG
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_RPC_WRAPPERS \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_INCLASS \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_STANDARD_CONSTRUCTORS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_RPC_WRAPPERS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_INCLASS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define GCODEViewer_Source_GCODEViewer_modelViewer_h_68_GENERATED_BODY \
+#define GCODEViewer_Source_GCODEViewer_modelViewer_h_70_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_RPC_WRAPPERS_NO_PURE_DECLS \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_INCLASS_NO_PURE_DECLS \
-	GCODEViewer_Source_GCODEViewer_modelViewer_h_68_ENHANCED_CONSTRUCTORS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_INCLASS_NO_PURE_DECLS \
+	GCODEViewer_Source_GCODEViewer_modelViewer_h_70_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

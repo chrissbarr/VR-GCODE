@@ -50,6 +50,17 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFFileStructureLevel
 		FNativeFunctionRegistrar::RegisterFunction(AFileManagerActor::StaticClass(), "GetDrivePaths",(Native)&AFileManagerActor::execGetDrivePaths);
 	}
 	IMPLEMENT_CLASS(AFileManagerActor, 1963751231);
+	void AInteractiveObjectActor::StaticRegisterNativesAInteractiveObjectActor()
+	{
+		FNativeFunctionRegistrar::RegisterFunction(AInteractiveObjectActor::StaticClass(), "resetOrientation",(Native)&AInteractiveObjectActor::execresetOrientation);
+		FNativeFunctionRegistrar::RegisterFunction(AInteractiveObjectActor::StaticClass(), "resetScale",(Native)&AInteractiveObjectActor::execresetScale);
+	}
+	IMPLEMENT_CLASS(AInteractiveObjectActor, 2518253485);
+	void AImportedObject::StaticRegisterNativesAImportedObject()
+	{
+		FNativeFunctionRegistrar::RegisterFunction(AImportedObject::StaticClass(), "setFullFilePath",(Native)&AImportedObject::execsetFullFilePath);
+	}
+	IMPLEMENT_CLASS(AImportedObject, 2683872351);
 static class UEnum* EGcodePrintMoveEnum_StaticEnum()
 {
 	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
@@ -114,7 +125,7 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMove
 		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "rotateModel",(Native)&AmodelViewer::execrotateModel);
 		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "scaleModel",(Native)&AmodelViewer::execscaleModel);
 	}
-	IMPLEMENT_CLASS(AmodelViewer, 4052013562);
+	IMPLEMENT_CLASS(AmodelViewer, 1265265129);
 static class UEnum* EPrintMoveEnum_StaticEnum()
 {
 	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
@@ -159,15 +170,28 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 		FNativeFunctionRegistrar::RegisterFunction(UMyBlueprintFunctionLibrary::StaticClass(), "parseGcode",(Native)&UMyBlueprintFunctionLibrary::execparseGcode);
 	}
 	IMPLEMENT_CLASS(UMyBlueprintFunctionLibrary, 1322396606);
+	void UUserPawnMovementComponent::StaticRegisterNativesUUserPawnMovementComponent()
+	{
+	}
+	IMPLEMENT_CLASS(UUserPawnMovementComponent, 1878010002);
+	void AUserPawn::StaticRegisterNativesAUserPawn()
+	{
+	}
+	IMPLEMENT_CLASS(AUserPawn, 3088815104);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
+	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	PROCEDURALMESHCOMPONENT_API class UClass* Z_Construct_UClass_UProceduralMeshComponent_NoRegister();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FTransform();
 	ENGINE_API class UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
+	ENGINE_API class UClass* Z_Construct_UClass_UPawnMovementComponent();
+	ENGINE_API class UClass* Z_Construct_UClass_APawn();
 
 	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_ETileTargetType();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_AFileDisplayTile_NoRegister();
@@ -176,6 +200,13 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AFileManagerActor_GetDrivePaths();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_AFileManagerActor_NoRegister();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_AFileManagerActor();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AInteractiveObjectActor_resetOrientation();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AInteractiveObjectActor_resetScale();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AInteractiveObjectActor_NoRegister();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AInteractiveObjectActor();
+	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_AImportedObject_setFullFilePath();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AImportedObject_NoRegister();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AImportedObject();
 	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum();
 	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_ESTLFileType();
 	GCODEVIEWER_API class UEnum* Z_Construct_UEnum_GCODEViewer_EModelFileType();
@@ -199,6 +230,10 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	GCODEVIEWER_API class UFunction* Z_Construct_UFunction_UMyBlueprintFunctionLibrary_parseGcode();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary_NoRegister();
 	GCODEVIEWER_API class UClass* Z_Construct_UClass_UMyBlueprintFunctionLibrary();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_UUserPawnMovementComponent_NoRegister();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_UUserPawnMovementComponent();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AUserPawn_NoRegister();
+	GCODEVIEWER_API class UClass* Z_Construct_UClass_AUserPawn();
 	GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
 	UEnum* Z_Construct_UEnum_GCODEViewer_ETileTargetType()
 	{
@@ -365,6 +400,148 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AFileManagerActor(Z_Construct_UClass_AFileManagerActor, &AFileManagerActor::StaticClass, TEXT("AFileManagerActor"), false, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AFileManagerActor);
+	UFunction* Z_Construct_UFunction_AInteractiveObjectActor_resetOrientation()
+	{
+		UObject* Outer=Z_Construct_UClass_AInteractiveObjectActor();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("resetOrientation"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("InteractiveObject"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("InteractiveObjectActor.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AInteractiveObjectActor_resetScale()
+	{
+		UObject* Outer=Z_Construct_UClass_AInteractiveObjectActor();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("resetScale"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("InteractiveObject"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("InteractiveObjectActor.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_AInteractiveObjectActor_NoRegister()
+	{
+		return AInteractiveObjectActor::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AInteractiveObjectActor()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AActor();
+			Z_Construct_UPackage__Script_GCODEViewer();
+			OuterClass = AInteractiveObjectActor::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+				OuterClass->LinkChild(Z_Construct_UFunction_AInteractiveObjectActor_resetOrientation());
+				OuterClass->LinkChild(Z_Construct_UFunction_AInteractiveObjectActor_resetScale());
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_initialRotation = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("initialRotation"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(initialRotation, AInteractiveObjectActor), 0x0010000000000005, Z_Construct_UScriptStruct_FRotator());
+				UProperty* NewProp_initialScale = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("initialScale"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(initialScale, AInteractiveObjectActor), 0x0010000000000005, Z_Construct_UScriptStruct_FVector());
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AInteractiveObjectActor_resetOrientation(), "resetOrientation"); // 2740973023
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AInteractiveObjectActor_resetScale(), "resetScale"); // 1063783176
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("InteractiveObjectActor.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("InteractiveObjectActor.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_initialRotation, TEXT("Category"), TEXT("InteractiveObject"));
+				MetaData->SetValue(NewProp_initialRotation, TEXT("ModuleRelativePath"), TEXT("InteractiveObjectActor.h"));
+				MetaData->SetValue(NewProp_initialRotation, TEXT("ToolTip"), TEXT("Initial rotation"));
+				MetaData->SetValue(NewProp_initialScale, TEXT("Category"), TEXT("InteractiveObject"));
+				MetaData->SetValue(NewProp_initialScale, TEXT("ModuleRelativePath"), TEXT("InteractiveObjectActor.h"));
+				MetaData->SetValue(NewProp_initialScale, TEXT("ToolTip"), TEXT("Initial scale"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AInteractiveObjectActor(Z_Construct_UClass_AInteractiveObjectActor, &AInteractiveObjectActor::StaticClass, TEXT("AInteractiveObjectActor"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AInteractiveObjectActor);
+	UFunction* Z_Construct_UFunction_AImportedObject_setFullFilePath()
+	{
+		struct ImportedObject_eventsetFullFilePath_Parms
+		{
+			FString path;
+		};
+		UObject* Outer=Z_Construct_UClass_AImportedObject();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("setFullFilePath"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(ImportedObject_eventsetFullFilePath_Parms));
+			UProperty* NewProp_path = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("path"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(path, ImportedObject_eventsetFullFilePath_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("ImportedObject"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("ImportedObject.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Set the path to the file to load, including the file name and extension"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_AImportedObject_NoRegister()
+	{
+		return AImportedObject::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AImportedObject()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_AInteractiveObjectActor();
+			Z_Construct_UPackage__Script_GCODEViewer();
+			OuterClass = AImportedObject::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+				OuterClass->LinkChild(Z_Construct_UFunction_AImportedObject_setFullFilePath());
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_fullFilePath = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fullFilePath"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(fullFilePath, AImportedObject), 0x0010000000000005);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AImportedObject_setFullFilePath(), "setFullFilePath"); // 189228599
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("ImportedObject.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("ImportedObject.h"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("Category"), TEXT("File"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("ModuleRelativePath"), TEXT("ImportedObject.h"));
+				MetaData->SetValue(NewProp_fullFilePath, TEXT("ToolTip"), TEXT("Path to file to load"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AImportedObject(Z_Construct_UClass_AImportedObject, &AImportedObject::StaticClass, TEXT("AImportedObject"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AImportedObject);
 	UEnum* Z_Construct_UEnum_GCODEViewer_EGcodePrintMoveEnum()
 	{
 		UPackage* Outer=Z_Construct_UPackage__Script_GCODEViewer();
@@ -591,7 +768,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		static UClass* OuterClass = NULL;
 		if (!OuterClass)
 		{
-			Z_Construct_UClass_AActor();
+			Z_Construct_UClass_AImportedObject();
 			Z_Construct_UPackage__Script_GCODEViewer();
 			OuterClass = AmodelViewer::StaticClass();
 			if (!(OuterClass->ClassFlags & CLASS_Constructed))
@@ -611,6 +788,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_doFaster = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("doFaster"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(doFaster, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(doFaster, AmodelViewer), sizeof(bool), true);
 				UProperty* NewProp_maxSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("maxSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(maxSize, AmodelViewer), 0x0010000000000005);
 				UProperty* NewProp_minSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("minSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(minSize, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_SphereComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SphereComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(SphereComponent, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_USphereComponent_NoRegister());
+				UProperty* NewProp_CollisionBounds = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionBounds"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionBounds, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_UBoxComponent_NoRegister());
 				UProperty* NewProp_loadRateModifier = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadRateModifier"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(loadRateModifier, AmodelViewer), 0x0010000000000005);
 				CPP_BOOL_PROPERTY_BITMASK_STRUCT(selected, AmodelViewer, bool);
 				UProperty* NewProp_selected = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("selected"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(selected, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(selected, AmodelViewer), sizeof(bool), true);
@@ -640,7 +819,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_fileStringArray_Inner = new(EC_InternalUseOnlyConstructor, NewProp_fileStringArray, TEXT("fileStringArray"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
 				UProperty* NewProp_stlType = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("stlType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(CPP_PROPERTY_BASE(stlType, AmodelViewer), 0x0010000000000005, Z_Construct_UEnum_GCODEViewer_ESTLFileType());
 				UProperty* NewProp_fileType = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fileType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(CPP_PROPERTY_BASE(fileType, AmodelViewer), 0x0010000000000005, Z_Construct_UEnum_GCODEViewer_EModelFileType());
-				UProperty* NewProp_fullFilePath = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("fullFilePath"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(fullFilePath, AmodelViewer), 0x0010000000000005);
 				UProperty* NewProp_loadingProgress = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadingProgress"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(loadingProgress, AmodelViewer), 0x0010000000000005);
 				CPP_BOOL_PROPERTY_BITMASK_STRUCT(modelConstructed, AmodelViewer, bool);
 				UProperty* NewProp_modelConstructed = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("modelConstructed"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(modelConstructed, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(modelConstructed, AmodelViewer), sizeof(bool), true);
@@ -672,6 +850,12 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_minSize, TEXT("Category"), TEXT("Model"));
 				MetaData->SetValue(NewProp_minSize, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_minSize, TEXT("ToolTip"), TEXT("Minimum model scale"));
+				MetaData->SetValue(NewProp_SphereComponent, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_SphereComponent, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_SphereComponent, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_CollisionBounds, TEXT("Category"), TEXT("Model"));
+				MetaData->SetValue(NewProp_CollisionBounds, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_CollisionBounds, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_loadRateModifier, TEXT("Category"), TEXT("Loading"));
 				MetaData->SetValue(NewProp_loadRateModifier, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_loadRateModifier, TEXT("ToolTip"), TEXT("Is selected by user?"));
@@ -736,9 +920,6 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_fileType, TEXT("Category"), TEXT("File"));
 				MetaData->SetValue(NewProp_fileType, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_fileType, TEXT("ToolTip"), TEXT("Type of file to load"));
-				MetaData->SetValue(NewProp_fullFilePath, TEXT("Category"), TEXT("File"));
-				MetaData->SetValue(NewProp_fullFilePath, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
-				MetaData->SetValue(NewProp_fullFilePath, TEXT("ToolTip"), TEXT("Path to file to load"));
 				MetaData->SetValue(NewProp_loadingProgress, TEXT("Category"), TEXT("Loading"));
 				MetaData->SetValue(NewProp_loadingProgress, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_loadingProgress, TEXT("ToolTip"), TEXT("Progress made in loading file"));
@@ -1123,6 +1304,71 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UMyBlueprintFunctionLibrary(Z_Construct_UClass_UMyBlueprintFunctionLibrary, &UMyBlueprintFunctionLibrary::StaticClass, TEXT("UMyBlueprintFunctionLibrary"), false, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UMyBlueprintFunctionLibrary);
+	UClass* Z_Construct_UClass_UUserPawnMovementComponent_NoRegister()
+	{
+		return UUserPawnMovementComponent::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UUserPawnMovementComponent()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UPawnMovementComponent();
+			Z_Construct_UPackage__Script_GCODEViewer();
+			OuterClass = UUserPawnMovementComponent::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20B00080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("ComponentReplication"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("UserPawnMovementComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("UserPawnMovementComponent.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UUserPawnMovementComponent(Z_Construct_UClass_UUserPawnMovementComponent, &UUserPawnMovementComponent::StaticClass, TEXT("UUserPawnMovementComponent"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UUserPawnMovementComponent);
+	UClass* Z_Construct_UClass_AUserPawn_NoRegister()
+	{
+		return AUserPawn::StaticClass();
+	}
+	UClass* Z_Construct_UClass_AUserPawn()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APawn();
+			Z_Construct_UPackage__Script_GCODEViewer();
+			OuterClass = AUserPawn::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("UserPawn.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("UserPawn.h"));
+				MetaData->SetValue(OuterClass, TEXT("OnlyDefaultConstructorDeclared"), TEXT(""));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_AUserPawn(Z_Construct_UClass_AUserPawn, &AUserPawn::StaticClass, TEXT("AUserPawn"), false, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(AUserPawn);
 	UPackage* Z_Construct_UPackage__Script_GCODEViewer()
 	{
 		static UPackage* ReturnPackage = NULL;
@@ -1131,8 +1377,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/GCODEViewer")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xEF13F450;
-			Guid.B = 0x2A195B8C;
+			Guid.A = 0x332AEAA4;
+			Guid.B = 0xE0B75F44;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

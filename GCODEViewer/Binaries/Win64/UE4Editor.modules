@@ -1,8 +1,8 @@
 {
 	"Changelist" : 2946394,
-	"BuildId" : "9f9dcc27-6b31-4f29-b9c4-fd6ad787d014",
+	"BuildId" : "da1dcd9e-115a-4794-8fe7-04885d3ed5bc",
 	"Modules" : 
 	{
-		"GCODEViewer" : "UE4Editor-GCODEViewer-4491.dll"
+		"GCODEViewer" : "UE4Editor-GCODEViewer-5714.dll"
 	}
 }

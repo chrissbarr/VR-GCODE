@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\GCODEViewer.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{23BE4A99-BDE3-4A5D-9EFA-C5D4936B699D}</UniqueIdentifier>
+      <UniqueIdentifier>{BF7A6A5C-B5A1-4D05-897F-691559FD55BB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\GCODEViewer.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{182123A8-CF67-4565-92F6-F41C42507B0A}</UniqueIdentifier>
+      <UniqueIdentifier>{65296F78-0B47-46B6-90EA-4FB78CF6C1E6}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,8 +27,20 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\GCODEViewer">
-      <UniqueIdentifier>{BCDC9741-986D-4A31-912F-23F3519BCC5E}</UniqueIdentifier>
+      <UniqueIdentifier>{BE4DD596-8565-439C-849C-140528F069DE}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\GCODEViewer\FileDisplayTile.cpp">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GCODEViewer\FileDisplayTile.h">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GCODEViewer\FileManagerActor.cpp">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GCODEViewer\FileManagerActor.h">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClInclude>
     <None Include="..\..\Source\GCODEViewer\GCODEViewer.Build.cs">
       <Filter>Source\GCODEViewer</Filter>
     </None>
@@ -36,6 +48,12 @@
       <Filter>Source\GCODEViewer</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\GCODEViewer\GCODEViewer.h">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GCODEViewer\InteractiveObjectActor.cpp">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GCODEViewer\InteractiveObjectActor.h">
       <Filter>Source\GCODEViewer</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\GCODEViewer\modelViewer.cpp">
@@ -58,18 +76,24 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\GCODEViewer\FileManagerActor.h">
+    <ClInclude Include="..\..\Source\GCODEViewer\ImportedObject.h">
       <Filter>Source\GCODEViewer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GCODEViewer\FileDisplayTile.h">
+    <ClInclude Include="..\..\Source\GCODEViewer\UserPawn.h">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GCODEViewer\UserPawnMovementComponent.h">
       <Filter>Source\GCODEViewer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\GCODEViewer\FileManagerActor.cpp">
+    <ClCompile Include="..\..\Source\GCODEViewer\ImportedObject.cpp">
       <Filter>Source\GCODEViewer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GCODEViewer\FileDisplayTile.cpp">
+    <ClCompile Include="..\..\Source\GCODEViewer\UserPawn.cpp">
+      <Filter>Source\GCODEViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GCODEViewer\UserPawnMovementComponent.cpp">
       <Filter>Source\GCODEViewer</Filter>
     </ClCompile>
   </ItemGroup>
