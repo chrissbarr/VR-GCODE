@@ -5,6 +5,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "ProceduralMeshComponent.h"
+#include "ImportedObject.h"
 
 
 // Sets default values
@@ -13,18 +14,31 @@ AmodelViewer::AmodelViewer()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//AutoReceiveInput = EAutoReceiveInput::Player0;
-
 	//InputComponent->BindAction("ResetModel", IE_Pressed, this, &AmodelViewer::resetScaleAndOrientation);
-	
+	UE_LOG(LogTemp, Warning, TEXT("Model spawned"));
 
 	// Our root component will be a sphere that reacts to physics
 	USphereComponent* SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
 	RootComponent = SphereComponent;
-	SphereComponent->InitSphereRadius(40.0f);
+	SphereComponent->InitSphereRadius(2.0f);
 	SphereComponent->SetVisibility(true, false);
 	SphereComponent->SetHiddenInGame(false);
 	SphereComponent->SetCollisionProfileName(TEXT("Pawn"));
+
+
+	CollisionBounds = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBounds"));
+	CollisionBounds->RegisterComponent();
+	CollisionBounds->AttachTo(GetRootComponent(), NAME_None);
+	CollisionBounds->AttachParent = RootComponent;
+	CollisionBounds->InitBoxExtent(FVector(10, 10, 10));
+	CollisionBounds->SetVisibility(true, false);
+	CollisionBounds->SetHiddenInGame(false);
+	//CollisionBounds->SetCollisionProfileName(TEXT("Pawn"));
+	CollisionBounds->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	CollisionBounds->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
+	CollisionBounds->SetCollisionObjectType(ECollisionChannel::ECC_Visibility);
+	CollisionBounds->CanCharacterStepUpOn = ECB_No;
+
 
 	modelProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("GeneratedMesh"));
 
@@ -82,9 +96,11 @@ void AmodelViewer::Tick( float DeltaTime )
 }
 
 void AmodelViewer::resetScaleAndOrientation() {
-	SetActorRotation(FRotator(0,0,0));
-	SetActorScale3D(FVector(1, 1, 1));
+	Super::resetScale();
+	Super::resetOrientation();
 	UE_LOG(LogTemp, Warning, TEXT("Model scale and rotation reset."));
+
+	// TODO : reset vertical position to maintain bed offset on reset
 }
 
 void AmodelViewer::adjustOperationSpeed() {
@@ -425,6 +441,11 @@ bool AmodelViewer::constructModel() {
 		double finishedTime = FDateTime::Now().GetTimeOfDay().GetTotalMilliseconds();
 		UE_LOG(LogTemp, Warning, TEXT("Loading completed at %f"), loadingStartedMillis);
 		UE_LOG(LogTemp, Warning, TEXT("Loading completed, total time %f"), finishedTime - loadingStartedMillis);
+
+		//CollisionBounds->InitBoxExtent(FVector(maxModelBounds.X - minModelBounds.X, maxModelBounds.Y - minModelBounds.Y, maxModelBounds.Z - minModelBounds.Z));
+		CollisionBounds->SetBoxExtent(FVector(maxModelBounds.X, maxModelBounds.Y, maxModelBounds.Z), true);
+
+		UE_LOG(LogTemp, Warning, TEXT("Object bounds calculated as %s"), *maxModelBounds.ToString());
 	}
 
 
@@ -491,6 +512,17 @@ bool AmodelViewer::constructGcodeModel() {
 				gcodeExtrusionRenderIndex++;
 				gcodeExtrusionRenderIndexPrev = gcodeExtrusionRenderIndex;
 				gcodeTransformArray.Add(spawnTransform);
+
+				if (i > 3) {
+					for (int j = 0; j < 3; j++) {
+						if (FMath::Abs((endPoint- modelCentreOffset)[j]) > FMath::Abs(maxModelBounds[j])) {
+							secondMaxModelBounds[j] = maxModelBounds[j];
+							maxModelBounds[j] = FMath::Abs((endPoint - modelCentreOffset)[j]);
+						}
+					}
+				}
+
+				
 			}
 			else {
 				gcodeTravelInstances.Last()->AddInstance(spawnTransform);

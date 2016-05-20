@@ -4,7 +4,9 @@
 
 #include "GameFramework/Actor.h"
 #include "ProceduralMeshComponent.h"
+#include "ImportedObject.h"
 #include "modelViewer.generated.h"
+
 
 
 typedef union floatdata {
@@ -63,7 +65,7 @@ struct GCODEVIEWER_API FPrintMove
 };
 
 UCLASS()
-class GCODEVIEWER_API AmodelViewer : public AActor
+class GCODEVIEWER_API AmodelViewer : public AImportedObject
 {
 	GENERATED_BODY()
 	
@@ -88,10 +90,6 @@ public:
 	/** Progress made in loading file */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loading)
 	float loadingProgress = 0.0;
-
-	/** Path to file to load */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = File)
-	FString fullFilePath;
 
 	/** Type of file to load */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = File)
@@ -201,6 +199,15 @@ public:
 
 	int parsingIndex = 0;
 	FVector gcodeLastPoint = FVector(0, 0, 0);
+
+	FVector maxModelBounds = FVector(0,0,0);
+	FVector secondMaxModelBounds = FVector(0,0,0);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
+	UBoxComponent* CollisionBounds;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
+	USphereComponent* SphereComponent;
 
 	void updatePercentageProgress();
 	 
