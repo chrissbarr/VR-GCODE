@@ -125,7 +125,7 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMove
 		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "rotateModel",(Native)&AmodelViewer::execrotateModel);
 		FNativeFunctionRegistrar::RegisterFunction(AmodelViewer::StaticClass(), "scaleModel",(Native)&AmodelViewer::execscaleModel);
 	}
-	IMPLEMENT_CLASS(AmodelViewer, 1265265129);
+	IMPLEMENT_CLASS(AmodelViewer, 1552195553);
 static class UEnum* EPrintMoveEnum_StaticEnum()
 {
 	extern GCODEVIEWER_API class UPackage* Z_Construct_UPackage__Script_GCODEViewer();
@@ -183,6 +183,9 @@ static struct FScriptStruct_GCODEViewer_StaticRegisterNativesFPrintMoveStructCPP
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API class UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UMaterial_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UMaterialInstance_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
@@ -788,6 +791,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_doFaster = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("doFaster"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(doFaster, AmodelViewer), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(doFaster, AmodelViewer), sizeof(bool), true);
 				UProperty* NewProp_maxSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("maxSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(maxSize, AmodelViewer), 0x0010000000000005);
 				UProperty* NewProp_minSize = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("minSize"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(minSize, AmodelViewer), 0x0010000000000005);
+				UProperty* NewProp_LoadingBox = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("LoadingBox"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(LoadingBox, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_UStaticMeshComponent_NoRegister());
+				UProperty* NewProp_loadingMaterialParent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadingMaterialParent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(loadingMaterialParent, AmodelViewer), 0x0010000000000005, Z_Construct_UClass_UMaterial_NoRegister());
+				UProperty* NewProp_loadingMaterial = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadingMaterial"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(loadingMaterial, AmodelViewer), 0x0010000000000005, Z_Construct_UClass_UMaterialInstance_NoRegister());
 				UProperty* NewProp_SphereComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SphereComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(SphereComponent, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_USphereComponent_NoRegister());
 				UProperty* NewProp_CollisionBounds = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CollisionBounds"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CollisionBounds, AmodelViewer), 0x001000000008000d, Z_Construct_UClass_UBoxComponent_NoRegister());
 				UProperty* NewProp_loadRateModifier = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("loadRateModifier"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(loadRateModifier, AmodelViewer), 0x0010000000000005);
@@ -850,6 +856,13 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_minSize, TEXT("Category"), TEXT("Model"));
 				MetaData->SetValue(NewProp_minSize, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_minSize, TEXT("ToolTip"), TEXT("Minimum model scale"));
+				MetaData->SetValue(NewProp_LoadingBox, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_LoadingBox, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_LoadingBox, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_loadingMaterialParent, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_loadingMaterialParent, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
+				MetaData->SetValue(NewProp_loadingMaterial, TEXT("Category"), TEXT("Loading"));
+				MetaData->SetValue(NewProp_loadingMaterial, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
 				MetaData->SetValue(NewProp_SphereComponent, TEXT("Category"), TEXT("Model"));
 				MetaData->SetValue(NewProp_SphereComponent, TEXT("EditInline"), TEXT("true"));
 				MetaData->SetValue(NewProp_SphereComponent, TEXT("ModuleRelativePath"), TEXT("modelViewer.h"));
@@ -1377,7 +1390,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/GCODEViewer")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x332AEAA4;
+			Guid.A = 0x0D15D2ED;
 			Guid.B = 0xE0B75F44;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
