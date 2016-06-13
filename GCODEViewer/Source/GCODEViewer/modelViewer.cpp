@@ -18,12 +18,20 @@ AmodelViewer::AmodelViewer()
 	UE_LOG(LogTemp, Warning, TEXT("Model spawned"));
 
 	// Our root component will be a sphere that reacts to physics
-	USphereComponent* SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
+	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
 	RootComponent = SphereComponent;
 	SphereComponent->InitSphereRadius(2.0f);
 	SphereComponent->SetVisibility(true, false);
 	SphereComponent->SetHiddenInGame(false);
-	SphereComponent->SetCollisionProfileName(TEXT("Pawn"));
+	SphereComponent->SetCollisionProfileName(TEXT("Custom"));
+	SphereComponent->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+	SphereComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	SphereComponent->SetSimulatePhysics(true);
+	SphereComponent->WakeRigidBody();
+	SphereComponent->SetEnableGravity(false);
+	SphereComponent->SetLinearDamping(1.0);
+	SphereComponent->SetAngularDamping(10.0);
+
 
 
 	CollisionBounds = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBounds"));
@@ -40,6 +48,22 @@ AmodelViewer::AmodelViewer()
 	CollisionBounds->CanCharacterStepUpOn = ECB_No;
 
 
+	//LoadingBox = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LoadingBox"));
+	//LoadingBox->RegisterComponent();
+	//LoadingBox->AttachTo(GetRootComponent(), NAME_None);
+	//LoadingBox->AttachParent = RootComponent;
+
+	//LoadingBox->SetVisibility(true, false);
+	//LoadingBox->SetHiddenInGame(false);
+	//LoadingBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+
+	//if (loadingMaterialParent) {
+	//	MaterialInst = UMaterialInstanceDynamic::Create(loadingMaterialParent, this);
+	//	LoadingBox->SetMaterial(0, MaterialInst);
+	//	MaterialInst->SetScalarParameterValue("Alpha", 0);
+	//}
+	
 	modelProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("GeneratedMesh"));
 
 	modelProceduralMesh->RegisterComponent();
@@ -86,8 +110,15 @@ void AmodelViewer::Tick( float DeltaTime )
 	else if (fileLoaded && !fileParsed) {
 		fileParsed = parseFile();
 		updateLoadingRate(DeltaTime);
+		if (MaterialInst) {
+			MaterialInst->SetScalarParameterValue("Alpha", loadingProgress / 100);
+		}
+
 	}
 	else if (fileLoaded && fileParsed && !modelConstructed) {
+		if (MaterialInst) {
+			MaterialInst->SetScalarParameterValue("Alpha", 0);
+		}
 		modelConstructed = constructModel();
 		updateLoadingRate(DeltaTime);
 	}
@@ -398,7 +429,7 @@ void AmodelViewer::updateStlModel() {
 
 void AmodelViewer::updateLoadingRate(float DeltaTime) {
 	static float loadRatePrev = 0;
-	if ((1 / DeltaTime) < 100) {
+	if ((1 / DeltaTime) < 90) {
 		loadRateModifier = FMath::Clamp(loadRateModifier * 0.95, 0.9, 10.0);
 		UE_LOG(LogTemp, Warning, TEXT("Minimum FPS reached!"));
 	}
@@ -763,6 +794,69 @@ bool AmodelViewer::parseBinaryStlFile() {
 }
 
 bool AmodelViewer::parseAsciiStlFile() {
+	int verticesPerTickOriginal = 10000;
+	bool fileExhausted = false;
+
+	int verticesPerTick = (int)verticesPerTickOriginal * loadRateModifier;
+	int endingIndex = parsingIndex + (verticesPerTick * 50);
+
+	TArray <float> tempVertex;
+	TArray <FString> stringArray;
+
+	for (int i = 0; i < fileStringArray.Num(); i++) {
+
+		tempVertex.Empty();
+		stringArray.Empty();
+
+		int normalStringLocation = fileStringArray[i].Find("normal", ESearchCase::IgnoreCase, ESearchDir::FromStart, -1);
+
+		if (normalStringLocation > -1) {
+
+			fileStringArray[i].RightChop(normalStringLocation + 6).ParseIntoArray(stringArray, TEXT(" "), true);
+
+			for (int j = 0; j < stringArray.Num(); j++) {
+				float normalComp;
+
+				normalComp = FCString::Atof(*stringArray[j]);
+				tempVertex.Add(normalComp);
+
+				//UE_LOG(LogTemp, Warning, TEXT("ASCII STL Normal section %s"), *stringArray[j]);
+				//UE_LOG(LogTemp, Warning, TEXT("ASCII STL Normal convert %f"), normalComp);
+			}
+
+			stlNormalArray.Add(FVector(tempVertex[2], tempVertex[1], tempVertex[0]));
+			stlNormalArray.Add(FVector(stlNormalArray[stlNormalArray.Num() - 1]));
+			stlNormalArray.Add(FVector(stlNormalArray[stlNormalArray.Num() - 1]));
+
+			//UE_LOG(LogTemp, Warning, TEXT("ASCII STL Normal %s"), *FVector(tempVertex[2], tempVertex[1], tempVertex[0]).ToString());
+		}
+
+
+
+		int vertexStringLocation = fileStringArray[i].Find("vertex", ESearchCase::IgnoreCase, ESearchDir::FromStart, -1);
+		//if line contains vertex, extract
+		if (vertexStringLocation > -1) {
+
+			fileStringArray[i].RightChop(vertexStringLocation + 6).ParseIntoArray(stringArray, TEXT(" "),true);
+
+			for (int j = 0; j < stringArray.Num(); j++) {
+				
+				tempVertex.Add(FCString::Atof(*stringArray[j]));
+
+				stlTriangleArray.Add(stlTriangleIndex);
+				stlTriangleIndex += 1;
+			}
+
+			stlVertexArray.Add(FVector(tempVertex[2], tempVertex[1], tempVertex[0]));
+			//UE_LOG(LogTemp, Warning, TEXT("ASCII STL Vertex %s"), *FVector(tempVertex[2], tempVertex[1], tempVertex[0]).ToString());
+
+
+
+		}
+	}
+
+	parsingIndex = -1;
+
 	return true;
 }
 
@@ -839,9 +933,11 @@ bool AmodelViewer::loadStlFile() {
 	//Determine if STL file is ASCII or Binary
 	if (stlFileIsAscii(fileStringArray)) {
 		stlType = ESTLFileType::PE_ASCII;
+		UE_LOG(LogTemp, Warning, TEXT("ASCII STL Detected"));
 	}
 	else {
 		stlType = ESTLFileType::PE_BINARY;
+		UE_LOG(LogTemp, Warning, TEXT("Binary STL Detected"));
 	}
 
 	//If ASCII, we've already loaded the file in the format we need
@@ -893,7 +989,7 @@ float AmodelViewer::gcodeGetAxisCoordFromLine(FString & gcodeLine, const FString
 
 bool AmodelViewer::stlFileIsAscii(TArray<FString> & fileStringArray) {
 	if (fileStringArray.Num() > 1) {
-		if (fileStringArray[0].Contains("solid", ESearchCase::IgnoreCase, ESearchDir::FromStart) && fileStringArray[1].Contains("solid", ESearchCase::IgnoreCase, ESearchDir::FromStart)) {
+		if (fileStringArray[0].Contains("solid", ESearchCase::IgnoreCase, ESearchDir::FromStart) && fileStringArray[1].Contains("facet", ESearchCase::IgnoreCase, ESearchDir::FromStart)) {
 			return true;
 		}
 		else {

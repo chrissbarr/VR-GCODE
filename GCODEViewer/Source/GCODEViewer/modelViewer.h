@@ -209,6 +209,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
 	USphereComponent* SphereComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loading)
+	UMaterialInstance* loadingMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loading)
+	UMaterial* loadingMaterialParent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Loading)
+	UStaticMeshComponent* LoadingBox;
+
+	UMaterialInstanceDynamic* MaterialInst;
+
 	void updatePercentageProgress();
 	 
 
@@ -258,11 +269,11 @@ public:
 
 	/** Minimum model scale */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
-	float minSize = 0.1;
+	float minSize = 0.01;
 
 	/** Maximum model scale */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
-	float maxSize = 10;
+	float maxSize = 1000;
 
 	/** Adjusts speed of operations */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Model)
