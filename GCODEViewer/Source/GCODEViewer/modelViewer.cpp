@@ -25,12 +25,13 @@ AmodelViewer::AmodelViewer()
 	SphereComponent->SetHiddenInGame(false);
 	SphereComponent->SetCollisionProfileName(TEXT("Custom"));
 	SphereComponent->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
-	SphereComponent->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	SphereComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SphereComponent->SetSimulatePhysics(true);
 	SphereComponent->WakeRigidBody();
 	SphereComponent->SetEnableGravity(false);
 	SphereComponent->SetLinearDamping(1.0);
 	SphereComponent->SetAngularDamping(10.0);
+	SphereComponent->ComponentTags.Add(FName("PhysicsRoot"));
 
 
 
@@ -43,6 +44,7 @@ AmodelViewer::AmodelViewer()
 	CollisionBounds->SetHiddenInGame(false);
 	//CollisionBounds->SetCollisionProfileName(TEXT("Pawn"));
 	CollisionBounds->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	CollisionBounds->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 	CollisionBounds->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	CollisionBounds->SetCollisionObjectType(ECollisionChannel::ECC_Visibility);
 	CollisionBounds->CanCharacterStepUpOn = ECB_No;
@@ -67,8 +69,8 @@ AmodelViewer::AmodelViewer()
 	modelProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("GeneratedMesh"));
 
 	modelProceduralMesh->RegisterComponent();
-	modelProceduralMesh->AttachTo(GetRootComponent(), NAME_None);
-	modelProceduralMesh->AttachParent = RootComponent;
+	modelProceduralMesh->AttachTo(CollisionBounds, NAME_None);
+	modelProceduralMesh->AttachParent = CollisionBounds;
 }
 
 // Called when the game starts or when spawned
