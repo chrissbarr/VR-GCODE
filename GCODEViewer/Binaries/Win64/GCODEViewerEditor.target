@@ -2,7 +2,7 @@
 	"TargetName" : "GCODEViewerEditor",
 	"Platform" : "Win64",
 	"Configuration" : "Development",
-	"BuildId" : "f2564611-fe2b-4272-8baf-06cc0595af0e",
+	"BuildId" : "03b437ec-c9c8-4f27-bb89-79ed6906aba7",
 	"Version" : 
 	{
 		"MajorVersion" : 4,
@@ -15,15 +15,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)\\Binaries\\Win64\\UE4Editor-GCODEViewer-5927.dll",
+			"Path" : "$(ProjectDir)\\Binaries\\Win64\\UE4Editor-GCODEViewer.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)\\Binaries\\Win64\\UE4Editor-GCODEViewer-5927.pdb",
+			"Path" : "$(ProjectDir)\\Binaries\\Win64\\UE4Editor-GCODEViewer.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\UE4Editor-GCODEViewer-5927.lib",
+			"Path" : "$(ProjectDir)\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\UE4Editor-GCODEViewer.lib",
 			"Type" : "ImportLibrary"
 		}
 	],
