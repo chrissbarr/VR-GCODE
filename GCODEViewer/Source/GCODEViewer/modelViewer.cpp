@@ -31,46 +31,25 @@ AmodelViewer::AmodelViewer()
 	SphereComponent->SetEnableGravity(false);
 	SphereComponent->SetLinearDamping(1.0);
 	SphereComponent->SetAngularDamping(10.0);
-	SphereComponent->ComponentTags.Add(FName("PhysicsRoot"));
-
 
 
 	CollisionBounds = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBounds"));
+	//CollisionBounds->SetupAttachment(RootComponent);
 	CollisionBounds->RegisterComponent();
-	CollisionBounds->AttachTo(GetRootComponent(), NAME_None);
-	CollisionBounds->AttachParent = RootComponent;
-	CollisionBounds->InitBoxExtent(FVector(10, 10, 10));
+	CollisionBounds->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform);
+	CollisionBounds->SetBoxExtent(FVector(25, 10, 10));
 	CollisionBounds->SetVisibility(true, false);
-	CollisionBounds->SetHiddenInGame(false);
-	//CollisionBounds->SetCollisionProfileName(TEXT("Pawn"));
+	CollisionBounds->SetHiddenInGame(true);
 	CollisionBounds->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	CollisionBounds->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 	CollisionBounds->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	CollisionBounds->SetCollisionObjectType(ECollisionChannel::ECC_Visibility);
 	CollisionBounds->CanCharacterStepUpOn = ECB_No;
-
-
-	//LoadingBox = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LoadingBox"));
-	//LoadingBox->RegisterComponent();
-	//LoadingBox->AttachTo(GetRootComponent(), NAME_None);
-	//LoadingBox->AttachParent = RootComponent;
-
-	//LoadingBox->SetVisibility(true, false);
-	//LoadingBox->SetHiddenInGame(false);
-	//LoadingBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
-
-	//if (loadingMaterialParent) {
-	//	MaterialInst = UMaterialInstanceDynamic::Create(loadingMaterialParent, this);
-	//	LoadingBox->SetMaterial(0, MaterialInst);
-	//	MaterialInst->SetScalarParameterValue("Alpha", 0);
-	//}
 	
 	modelProceduralMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("GeneratedMesh"));
 
 	modelProceduralMesh->RegisterComponent();
-	modelProceduralMesh->AttachTo(CollisionBounds, NAME_None);
-	modelProceduralMesh->AttachParent = CollisionBounds;
+	modelProceduralMesh->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform); //SetupAttachment(CollisionBounds);
 }
 
 // Called when the game starts or when spawned
@@ -477,6 +456,7 @@ bool AmodelViewer::constructModel() {
 
 		//CollisionBounds->InitBoxExtent(FVector(maxModelBounds.X - minModelBounds.X, maxModelBounds.Y - minModelBounds.Y, maxModelBounds.Z - minModelBounds.Z));
 		CollisionBounds->SetBoxExtent(FVector(maxModelBounds.X, maxModelBounds.Y, maxModelBounds.Z), true);
+		CollisionBounds->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform);
 
 		UE_LOG(LogTemp, Warning, TEXT("Object bounds calculated as %s"), *maxModelBounds.ToString());
 	}
@@ -581,7 +561,7 @@ void AmodelViewer::gcodeNewInstanceLayer(TArray<UInstancedStaticMeshComponent*> 
 
 	UInstancedStaticMeshComponent* newInstance = NewObject<UInstancedStaticMeshComponent>(this);
 	newInstance->RegisterComponentWithWorld(GetWorld());
-	newInstance->AttachTo(RootComponent);
+	newInstance->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform);
 	AddOwnedComponent(newInstance);
 	newInstance->SetRelativeLocation(FVector(0,0,0),false,NULL,ETeleportType::None);
 	newInstance->SetMaterial(0, AssetM_ExtrusionMaterialActive);
@@ -667,10 +647,7 @@ bool AmodelViewer::constructStlModel() {
 	modelProceduralMesh->CreateMeshSection(0, stlVertexArray, stlTriangleArray, stlNormalArray, TArray<FVector2D>(), TArray<FColor>(), TArray<FProcMeshTangent>(), false);
 
 	modelProceduralMesh->RegisterComponent();
-	modelProceduralMesh->AttachTo(GetRootComponent(), NAME_None);
-	modelProceduralMesh->AttachParent = RootComponent;
-
-	//modelProceduralMesh->section
+	modelProceduralMesh->AttachToComponent(GetRootComponent(),FAttachmentTransformRules::KeepWorldTransform);
 
 	return true;
 }
