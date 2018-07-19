@@ -19,7 +19,7 @@ First Video:
 alt="Demo Video 1" width="800" height="450" border="10" /></a>
 
 ## How To
-A compiled copy of the program can be downloaded [here](https://dl.dropboxusercontent.com/u/20412569/downloads/VRGCODE.zip). Otherwise, Unreal Engine 4.11 is required to compile and run the files. 
+A compiled copy of the program can be downloaded [on the releases page](https://github.com/chrissbarr/VR-GCODE/releases). Otherwise, this project was built and compiled in Unreal Engine 4.11. Newer versions may be able to open and compile the project, but have not been tested. 
 
 Upon opening, the program will scan the "GCODEViewer" directory and look for any .gcode files (up to 10 total). These files will then be displayed, and a file can be selected to preview.
 
